@@ -1,34 +1,31 @@
 {
-  "current": {
-    "task": "Building legal automation bots",
-    "started": "2026-02-02T02:30:00-08:00",
-    "details": "Contract Review Bot + Meeting Prep Bot complete. Ready for tomorrow."
-  },
+  "current": [
+    {
+      "title": "Overnight legal bot work",
+      "status": "done",
+      "completedAt": "02:50 PST"
+    }
+  ],
   "completed": [
     {
-      "task": "Built Contract Review Bot",
-      "completed": "2026-02-02T02:45:00-08:00",
-      "outcome": "Full prompts, templates, risk matrix ready"
+      "task": "Built Meeting Prep Bot",
+      "completedAt": "02:50 PST"
     },
     {
-      "task": "Built Meeting Prep Bot", 
-      "completed": "2026-02-02T02:50:00-08:00",
-      "outcome": "README and prep template ready"
+      "task": "Built Contract Review Bot (prompts + templates + risk matrix)",
+      "completedAt": "02:45 PST"
     },
     {
-      "task": "Created LEGAL-BOTS-READY-TO-BUILD.md",
-      "completed": "2026-02-02T02:35:00-08:00",
-      "outcome": "Full roadmap for 6 legal bots"
+      "task": "Created LEGAL-BOTS-READY-TO-BUILD.md roadmap",
+      "completedAt": "02:35 PST"
     },
     {
-      "task": "Set up bots folder structure",
-      "completed": "2026-02-02T02:28:00-08:00",
-      "outcome": "~/clawd/bots/ with all subfolders created"
+      "task": "Set up ~/clawd/bots/ folder structure",
+      "completedAt": "02:28 PST"
     },
     {
-      "task": "Dashboard deployed to Vercel",
-      "completed": "2026-02-02T01:30:00-08:00",
-      "outcome": "Live at frankie-dashboard.vercel.app"
+      "task": "Deployed dashboard to Vercel",
+      "completedAt": "01:30 PST"
     }
   ],
   "queue": [

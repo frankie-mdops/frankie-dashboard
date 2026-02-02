@@ -1665,12 +1665,12 @@
       <div class="welcome">
         <div class="welcome-content">
           <h1 id="welcomeTitle">Good morning, Dee 💜</h1>
-          <p id="welcomeSubtitle">Let's make today count.</p>
+          <p id="welcomeSubtitle">Track what Frankie's working on 🤖</p>
         </div>
         <div class="stats-row">
           <div class="stat">
             <div class="stat-num" id="statTodo">0</div>
-            <div class="stat-label">To Do</div>
+            <div class="stat-label">Queued</div>
           </div>
           <div class="stat">
             <div class="stat-num" id="statProgress">0</div>
@@ -1678,13 +1678,13 @@
           </div>
           <div class="stat">
             <div class="stat-num" id="statDone">0</div>
-            <div class="stat-label">Done</div>
+            <div class="stat-label">Completed</div>
           </div>
         </div>
       </div>
 
       <div class="toolbar">
-        <div class="toolbar-title">Task Board</div>
+        <div class="toolbar-title">🤖 Frankie's Task Board</div>
         <div class="filters">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="content">Content</button>
@@ -1941,27 +1941,28 @@
     // ═══════════════════════════════════════════════════════════
     // TASKS
     // ═══════════════════════════════════════════════════════════
-    let tasks = JSON.parse(localStorage.getItem('frankieTasks2')) || {
+    let tasks = JSON.parse(localStorage.getItem('frankieTasks3')) || {
       todo: [
-        { id: 1, title: "Pay CA Bar Fees (Due March)", tag: "legal", priority: "medium" },
-        { id: 2, title: "10k steps — no excuses 🏃‍♀️", tag: "health", priority: "high" },
-        { id: 3, title: "Host dashboard on GitHub Pages", tag: "empire", priority: "medium" },
-        { id: 4, title: "Review GL Reactions analytics", tag: "content", priority: "medium" },
-        { id: 5, title: "Telnyx Storage auto-backup", tag: "business", priority: "medium" },
+        { id: 1, title: "Build Subpoena Intake Bot", tag: "legal", priority: "medium" },
+        { id: 2, title: "Build Deadline Tracker Bot", tag: "legal", priority: "medium" },
+        { id: 3, title: "Gmail OAuth setup (needs Dee)", tag: "business", priority: "high" },
+        { id: 4, title: "Email Triage Bot (after OAuth)", tag: "legal", priority: "medium" },
+        { id: 5, title: "Daily Briefing Bot (after OAuth)", tag: "legal", priority: "medium" },
       ],
-      progress: [
-        { id: 7, title: "Build Frankie Dashboard", tag: "empire", priority: "high" },
-        { id: 8, title: "Geronimo Sync Call @ 2pm", tag: "content", priority: "high" },
-      ],
+      progress: [],
       done: [
-        { id: 9, title: "Migrate to OpenClaw", tag: "empire", date: "Feb 1" },
-        { id: 10, title: "Create frankie.mdops@gmail.com", tag: "business", date: "Feb 1" },
-        { id: 11, title: "Content Center mentionPatterns", tag: "content", date: "Feb 1" },
-        { id: 12, title: "Brave Search API setup", tag: "empire", date: "Feb 1" },
+        { id: 6, title: "Built Meeting Prep Bot", tag: "legal", date: "Completed at 02:50 PST" },
+        { id: 7, title: "Built Contract Review Bot (prompts + templates)", tag: "legal", date: "Completed at 02:45 PST" },
+        { id: 8, title: "Created LEGAL-BOTS-READY-TO-BUILD.md", tag: "legal", date: "Completed at 02:35 PST" },
+        { id: 9, title: "Set up ~/clawd/bots/ folder structure", tag: "empire", date: "Completed at 02:28 PST" },
+        { id: 10, title: "Deployed dashboard to Vercel", tag: "empire", date: "Completed at 01:30 PST" },
+        { id: 11, title: "Google Calendar integration", tag: "empire", date: "Completed at 01:15 PST" },
+        { id: 12, title: "JS password protection", tag: "empire", date: "Completed at 00:45 PST" },
       ],
       archive: [
-        { id: 13, title: "gog calendar OAuth fix", tag: "business", date: "Jan 31" },
-        { id: 14, title: "Full Clawdbot backup", tag: "empire", date: "Jan 31" },
+        { id: 13, title: "Migrate to OpenClaw", tag: "empire", date: "Feb 1" },
+        { id: 14, title: "Create frankie.mdops@gmail.com", tag: "business", date: "Feb 1" },
+        { id: 15, title: "Content Center mentionPatterns", tag: "content", date: "Feb 1" },
       ]
     };
 
@@ -1971,7 +1972,7 @@
     const colMap = { todo: 'colTodo', progress: 'colProgress', done: 'colDone', archive: 'colArchive' };
 
     function saveTasks() {
-      localStorage.setItem('frankieTasks2', JSON.stringify(tasks));
+      localStorage.setItem('frankieTasks3', JSON.stringify(tasks));
     }
 
     function deleteTask(id) {
@@ -2142,7 +2143,12 @@
         }
         if (task) {
           if (newCol === 'done' && !task.date) { 
-            task.date = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}); 
+            const now = new Date();
+            const hours = now.getHours();
+            const mins = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const h = hours % 12 || 12;
+            task.date = `Completed at ${h}:${mins} PST`; 
             delete task.due; 
             delete task.priority; 
           }
@@ -2325,27 +2331,39 @@
           const done = data.current?.filter(t => t.status === 'done') || [];
           
           if (active.length > 0) {
-            html += '<div style="margin-bottom:8px;font-weight:500;color:var(--accent-lavender);">Working on:</div>';
+            html += '<div style="margin-bottom:8px;font-weight:500;color:var(--accent-lavender);">⚡ Working on:</div>';
             active.forEach(t => {
-              html += `<div class="frankie-task-item frankie-task-active">⚡ ${t.title}</div>`;
+              html += `<div class="frankie-task-item frankie-task-active">${t.title}</div>`;
             });
           }
           
           if (done.length > 0) {
-            html += '<div style="margin:10px 0 6px;font-weight:500;color:var(--status-online);">Completed:</div>';
-            done.slice(0, 3).forEach(t => {
-              html += `<div class="frankie-task-item frankie-task-done">✓ ${t.title}</div>`;
+            html += '<div style="margin:10px 0 6px;font-weight:500;color:var(--status-online);">✅ Just Completed:</div>';
+            done.forEach(t => {
+              const time = t.completedAt ? ` <span style="color:var(--text-faint);font-size:9px;">(${t.completedAt})</span>` : '';
+              html += `<div class="frankie-task-item frankie-task-done">${t.title}${time}</div>`;
             });
           }
           
           if (data.completed?.length > 0) {
-            html += '<div style="margin:10px 0 4px;font-size:10px;color:var(--text-muted);">Earlier:</div>';
-            data.completed.slice(0, 3).forEach(t => {
-              html += `<div class="frankie-task-item" style="font-size:10px;color:var(--text-faint);">✓ ${t.title}</div>`;
+            html += '<div style="margin:10px 0 4px;font-weight:500;color:var(--text-muted);">📋 Completed Tonight:</div>';
+            data.completed.forEach(t => {
+              const time = t.completedAt ? ` <span style="color:var(--text-faint);">@ ${t.completedAt}</span>` : '';
+              html += `<div class="frankie-task-item" style="font-size:10px;color:var(--text-secondary);">✓ ${t.task}${time}</div>`;
             });
           }
           
-          container.innerHTML = html || '<div style="color:var(--text-muted);font-style:italic;">No active tasks</div>';
+          if (data.queue?.length > 0) {
+            html += '<div style="margin:12px 0 4px;font-weight:500;color:var(--text-muted);">📥 Up Next:</div>';
+            data.queue.slice(0, 3).forEach(t => {
+              html += `<div class="frankie-task-item" style="font-size:10px;color:var(--text-faint);">○ ${t}</div>`;
+            });
+            if (data.queue.length > 3) {
+              html += `<div style="font-size:9px;color:var(--text-faint);margin-top:4px;">+${data.queue.length - 3} more in queue</div>`;
+            }
+          }
+          
+          container.innerHTML = html || '<div style="color:var(--text-muted);font-style:italic;">Standing by 💜</div>';
         }
       } catch (e) { console.log('Tasks fetch error:', e); }
     }
