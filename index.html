@@ -1081,6 +1081,10 @@
 
     const colMap = { todo: 'colTodo', progress: 'colProgress', done: 'colDone', archive: 'colArchive' };
 
+    function saveTasks() {
+      localStorage.setItem('frankieTasks2', JSON.stringify(tasks));
+    }
+
     function render() {
       Object.keys(colMap).forEach(key => {
         const el = document.getElementById(colMap[key]);
@@ -1104,12 +1108,28 @@
       else if (t.priority) meta += `<span class="priority ${t.priority}">${t.priority}</span>`;
       if (t.date) meta += `<span class="date-badge">${t.date}</span>`;
 
-      card.innerHTML = `<div class="card-title">${t.title}</div><div class="card-meta">${meta}</div>`;
+      const titleEl = document.createElement('div');
+      titleEl.className = 'card-title';
+      titleEl.textContent = t.title;
+      titleEl.contentEditable = true;
+      titleEl.style.cursor = 'text';
+      titleEl.addEventListener('focus', () => { card.draggable = false; });
+      titleEl.addEventListener('blur', () => { 
+        card.draggable = true;
+        if (titleEl.textContent.trim() !== t.title) {
+          t.title = titleEl.textContent.trim() || t.title;
+          saveTasks();
+          toast('Saved!');
+        }
+      });
+      titleEl.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); titleEl.blur(); } });
+      card.appendChild(titleEl);
+      const metaEl = document.createElement('div');
+      metaEl.className = 'card-meta';
+      metaEl.innerHTML = meta;
+      card.appendChild(metaEl);
       card.addEventListener('dragstart', e => { draggedEl = card; card.classList.add('dragging'); });
       card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedEl = null; document.querySelectorAll('.column-body').forEach(c => c.classList.remove('drag-over')); });
-      card.addEventListener('dblclick', () => editTask(t.id));
-      card.style.cursor = 'pointer';
-      card.title = 'Double-click to edit';
       return card;
     }
 
