@@ -1375,10 +1375,78 @@
       .kanban { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* Mobile Header with Avatar */
+    .mobile-header {
+      display: none;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-md);
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .mobile-header .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 2px solid var(--border);
+    }
+
+    .mobile-header-info {
+      flex: 1;
+    }
+
+    .mobile-header-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .mobile-header-status {
+      font-size: 11px;
+      color: var(--status-online);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mobile-header-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--status-online);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .mobile-calendar {
+      display: none;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: var(--space-md);
+      margin: var(--space-md);
+      margin-top: 0;
+      border: 1px solid var(--border);
+    }
+
+    .mobile-calendar-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
       .sidebar-left { display: none; }
+      .sidebar-right { display: none; }
       .header-nav { display: none; }
+      .mobile-header { display: flex; }
+      .mobile-calendar { display: block; }
       .main { padding: var(--space-md); }
       .welcome { flex-direction: column; gap: var(--space-md); text-align: center; }
       .stats-row { justify-content: center; }
@@ -1473,6 +1541,22 @@
       <div class="auth-error" id="authError"></div>
       <div class="auth-hint">Dee's special number 💜</div>
     </div>
+  </div>
+
+  <!-- Mobile Header with Avatar -->
+  <div class="mobile-header">
+    <img src="assets/frankie-avatar.png" alt="Frankie" class="avatar">
+    <div class="mobile-header-info">
+      <div class="mobile-header-name">FRANKIE</div>
+      <div class="mobile-header-status" id="mobileStatusText">Standing by 💜</div>
+    </div>
+    <button class="theme-toggle" id="mobileThemeToggle" title="Toggle dark mode">🌙</button>
+  </div>
+
+  <!-- Mobile Calendar -->
+  <div class="mobile-calendar">
+    <div class="mobile-calendar-title">📅 Today's Schedule</div>
+    <div id="mobileCalendarEvents">Loading...</div>
   </div>
 
   <!-- Header -->
@@ -1834,6 +1918,8 @@
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('frankieTheme', theme);
       document.getElementById('themeToggle').textContent = theme === 'dark' ? '☀️' : '🌙';
+      const mobileThemeBtn = document.getElementById('mobileThemeToggle');
+      if (mobileThemeBtn) mobileThemeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
       document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#141414' : '#F9F9F8';
     }
 
@@ -1841,6 +1927,16 @@
       const current = document.documentElement.getAttribute('data-theme');
       setTheme(current === 'dark' ? 'light' : 'dark');
     });
+
+    // Mobile theme toggle
+    const mobileTheme = document.getElementById('mobileThemeToggle');
+    if (mobileTheme) {
+      mobileTheme.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+        mobileTheme.textContent = current === 'dark' ? '🌙' : '☀️';
+      });
+    }
 
     // ═══════════════════════════════════════════════════════════
     // TASKS
@@ -2260,6 +2356,8 @@
         const data = await res.json();
         if (data.status) {
           document.getElementById('statusText').textContent = data.status;
+          const mobileStatus = document.getElementById('mobileStatusText');
+          if (mobileStatus) mobileStatus.textContent = data.status;
         }
       } catch (e) {}
     }
@@ -2275,6 +2373,7 @@
         if (!res.ok) throw new Error('Calendar data not found');
         calendarData = await res.json();
         renderCalendar();
+        renderMobileCalendar();
         updateCalendarSyncInfo();
       } catch (e) {
         console.warn('Calendar fetch failed:', e);
@@ -2438,6 +2537,57 @@
       });
     }
     
+    function renderMobileCalendar() {
+      if (!calendarData || !calendarData.calendars) return;
+      
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      const allEvents = [];
+      calendarData.calendars.forEach(cal => {
+        (cal.events || []).forEach(event => {
+          if (event.status !== 'cancelled') {
+            allEvents.push({ ...event, calendarId: cal.id });
+          }
+        });
+      });
+      
+      const todayEvents = allEvents.filter(e => {
+        const eventDate = e.start.date ? new Date(e.start.date + 'T00:00:00') : new Date(e.start.dateTime);
+        return eventDate.getFullYear() === today.getFullYear() &&
+               eventDate.getMonth() === today.getMonth() &&
+               eventDate.getDate() === today.getDate();
+      });
+      
+      const mobileCalEl = document.getElementById('mobileCalendarEvents');
+      if (!mobileCalEl) return;
+      
+      if (todayEvents.length === 0) {
+        mobileCalEl.innerHTML = '<div style="color:var(--text-muted);font-size:12px;">No events today ✨</div>';
+        return;
+      }
+      
+      let html = '';
+      todayEvents.forEach(event => {
+        const isAllDay = !!event.start.date;
+        let timeStr = 'ALL DAY';
+        if (!isAllDay) {
+          const dt = new Date(event.start.dateTime);
+          const h = dt.getHours() % 12 || 12;
+          const m = dt.getMinutes();
+          const ampm = dt.getHours() >= 12 ? 'pm' : 'am';
+          timeStr = h + (m > 0 ? ':' + m.toString().padStart(2,'0') : '') + ampm;
+        }
+        const color = event.calendarId === 'md-personal' ? '#92e1c0' : '#9fc6e7';
+        html += `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border-light);">
+          <span style="width:4px;height:24px;background:${color};border-radius:2px;"></span>
+          <span style="font-size:10px;color:var(--text-muted);min-width:50px;">${timeStr}</span>
+          <span style="font-size:12px;color:var(--text-primary);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${event.summary || '(No title)'}</span>
+        </div>`;
+      });
+      mobileCalEl.innerHTML = html;
+    }
+
     function updateCalendarSyncInfo() {
       if (!calendarData || !calendarData.lastUpdated) return;
       const syncEl = document.getElementById('calendarSyncInfo');

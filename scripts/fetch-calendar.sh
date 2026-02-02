@@ -1,6 +1,7 @@
 #!/bin/bash
 # Fetch calendar events from Google Calendar and save as JSON
 # Designed to be run locally and push to GitHub for Vercel deployment
+# ONLY fetches M&D: Personal and deniseefer@gmail.com (per Dee's request)
 
 set -e
 
@@ -9,7 +10,7 @@ OUTPUT_FILE="$SCRIPT_DIR/../calendar-events.json"
 
 echo "📅 Fetching calendar events..."
 
-# Fetch events from M&D personal calendar (deeandmeesh@gmail.com)
+# Fetch events from M&D Personal calendar (NOT the content calendar)
 echo "  → M&D Personal calendar..."
 MD_PERSONAL=$(gog calendar events "74a0dd51c146a3282d8cdb2010931c427ae1c7ad4729a8857ff34f676fbfbff6@group.calendar.google.com" \
   --account=deeandmeesh@gmail.com \
@@ -17,16 +18,8 @@ MD_PERSONAL=$(gog calendar events "74a0dd51c146a3282d8cdb2010931c427ae1c7ad4729a
   --max=50 \
   --json 2>/dev/null || echo '{"events":[]}')
 
-# Fetch events from deeandmeesh primary calendar
-echo "  → M&D Content calendar..."
-MD_CONTENT=$(gog calendar events \
-  --account=deeandmeesh@gmail.com \
-  --days=14 \
-  --max=50 \
-  --json 2>/dev/null || echo '{"events":[]}')
-
 # Fetch events from deniseefer@gmail.com (Dee's personal)
-echo "  → Dee's calendar..."
+echo "  → Dee's personal calendar..."
 DEE_PERSONAL=$(gog calendar events \
   --account=deniseefer@gmail.com \
   --days=14 \
@@ -39,7 +32,7 @@ echo "  → Combining calendars..."
 # Get current timestamp
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-# Combine all events with source labels
+# Combine all events with source labels (only 2 calendars now)
 cat > "$OUTPUT_FILE" << EOF
 {
   "lastUpdated": "$TIMESTAMP",
@@ -49,12 +42,6 @@ cat > "$OUTPUT_FILE" << EOF
       "name": "M&D Personal",
       "color": "#92e1c0",
       "events": $(echo "$MD_PERSONAL" | jq '.events // []')
-    },
-    {
-      "id": "md-content",
-      "name": "M&D Content",
-      "color": "#9fe1e7",
-      "events": $(echo "$MD_CONTENT" | jq '.events // []')
     },
     {
       "id": "dee-personal",
