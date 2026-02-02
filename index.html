@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRANKIE — Dee's Mission Control</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* KITH / Fear of God - Ultra Muted Palette */
+      --bg-primary: #F9F9F8;
+      --bg-secondary: #FFFFFF;
+      --bg-hover: #F5F5F4;
+      --border: #E8E8E6;
+      --border-light: #F0F0EE;
+      
+      /* Muted Accents */
+      --accent-sage: #C5D1BE;
+      --accent-taupe: #C9C4BD;
+      --accent-lavender: #C5C1CB;
+      --accent-rose: #D3C6C6;
+      --accent-sand: #D3CFCA;
+      --accent-fog: #CACACA;
+      
+      /* Text */
+      --text-primary: #1F1F1F;
+      --text-secondary: #6B6B6B;
+      --text-muted: #9A9A9A;
+      --text-faint: #BABABA;
+      
+      /* Status */
+      --status-online: #22C55E;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      padding: 4px 0;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .sync-badge {
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+      padding: 4px 10px;
+      background: var(--bg-primary);
+      border-radius: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════════════════════════ */
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr 280px;
+      min-height: calc(100vh - 56px);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LEFT SIDEBAR - Agent Status
+    ═══════════════════════════════════════════════════════════ */
+    .sidebar-left {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .agent-card {
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--status-online);
+      opacity: 0.6;
+      animation: gentle-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes gentle-pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.02); }
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      transform: scale(1.15);
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 16px;
+      height: 16px;
+      background: var(--status-online);
+      border-radius: 50%;
+      border: 3px solid var(--bg-secondary);
+      z-index: 2;
+    }
+
+    .agent-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .agent-role {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .agent-status-live {
+      margin-top: 12px;
+      padding: 8px 12px;
+      background: #E8F5E9;
+      border: 1px solid #C5E1A5;
+      border-radius: 4px;
+      font-size: 9px;
+      color: #558B2F;
+      text-align: center;
+    }
+
+    .status-dot-live {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #9CCC65;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.2); }
+    }
+
+    .sidebar-section {
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 12px;
+    }
+
+    /* Collapsible sections */
+    .collapsible-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .collapsible-header:hover {
+      color: var(--text-muted);
+    }
+
+    .collapse-arrow {
+      font-size: 10px;
+      transition: transform 0.2s ease;
+      color: var(--text-faint);
+    }
+
+    .collapsible-content {
+      max-height: 500px;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.2s ease;
+      opacity: 1;
+    }
+
+    .collapsible-content.collapsed {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .collapse-arrow.collapsed {
+      transform: rotate(-90deg);
+    }
+
+    .schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .schedule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 11px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-time {
+      color: var(--text-muted);
+      min-width: 44px;
+      font-size: 10px;
+    }
+
+    .schedule-item.urgent {
+      color: #A08080;
+    }
+
+    .schedule-item.urgent .schedule-time {
+      color: #A08080;
+    }
+
+    /* Goals */
+    .goal-item {
+      margin-bottom: 14px;
+    }
+
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .goal-percent {
+      color: var(--text-muted);
+    }
+
+    .goal-bar {
+      height: 3px;
+      background: var(--border);
+      border-radius: 1.5px;
+      overflow: hidden;
+    }
+
+    .goal-fill {
+      height: 100%;
+      background: var(--accent-sage);
+      border-radius: 1.5px;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 20px;
+      font-size: 9px;
+      color: var(--text-faint);
+      letter-spacing: 0.05em;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main {
+      padding: 28px;
+      overflow-x: auto;
+      background: var(--bg-primary);
+    }
+
+    /* Welcome */
+    .welcome {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .welcome h1 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .welcome p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 40px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Filters */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .toolbar-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .filters {
+      display: flex;
+      gap: 4px;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text-muted);
+      color: var(--text-secondary);
+    }
+
+    .filter-btn.active {
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: var(--bg-secondary);
+    }
+
+    /* Kanban */
+    .kanban {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .column {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      min-height: 380px;
+    }
+
+    .column-head {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .column-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .column-count {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .column-body {
+      padding: 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 60px;
+    }
+
+    .column-body.drag-over {
+      background: var(--bg-hover);
+    }
+
+    .card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      padding: 12px;
+      cursor: grab;
+      transition: all 0.15s;
+    }
+
+    .card:hover {
+      border-color: #D0D0CE;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .card:active { cursor: grabbing; }
+    .card.dragging { opacity: 0.4; }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+    }
+
+    .tag-content { background: #E8D4F0; color: #6B4C7A; }
+    .tag-business { background: #F5E6D3; color: #8B6914; }
+    .tag-health { background: #D4EDDA; color: #2E7D42; }
+    .tag-legal { background: #D6E9F8; color: #3D6B99; }
+    .tag-personal { background: #FCE4EC; color: #AD1457; }
+    .tag-empire { background: #FFF3CD; color: #856404; }
+    .tag-meesh { background: #E0F7FA; color: #00838F; }
+
+    .priority {
+      font-size: 8px;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .priority.high { color: #A08080; }
+
+    .due-badge {
+      font-size: 8px;
+      color: #A08080;
+      font-weight: 500;
+    }
+
+    .date-badge {
+      font-size: 9px;
+      color: var(--text-muted);
+    }
+
+    .add-btn {
+      margin: 12px;
+      padding: 8px;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .add-btn:hover {
+      border-color: var(--text-muted);
+      color: var(--text-secondary);
+    }
+
+    /* Suggestions */
+    .suggestions {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 20px;
+    }
+
+    .suggestions-head {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .suggestions-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .suggestions-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .suggestions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .suggestion {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .suggestion:hover {
+      border-color: var(--accent-lavender);
+      transform: translateY(-1px);
+    }
+
+    .suggestion-icon {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .suggestion-text {
+      font-size: 11px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .suggestion-why {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RIGHT SIDEBAR
+    ═══════════════════════════════════════════════════════════ */
+    .sidebar-right {
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+
+    .panel-head {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .panel-body {
+      padding: 14px;
+    }
+
+    /* Valentine's */
+    .vday-panel {
+      background: linear-gradient(145deg, #FFEEF2, #FFE4EC);
+      border: 1px solid #FFD6E0;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .vday-emoji {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .vday-num {
+      font-size: 36px;
+      font-weight: 300;
+      color: #D81B60;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .vday-label {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #EC407A;
+    }
+
+    /* Fitness */
+    .fitness-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+    }
+
+    .fitness-row:last-child {
+      border-bottom: none;
+    }
+
+    .fitness-label {
+      color: var(--text-secondary);
+    }
+
+    .fitness-value {
+      font-weight: 500;
+    }
+
+    /* Notes */
+    .notes-input {
+      width: 100%;
+      min-height: 80px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      font-family: inherit;
+      font-size: 11px;
+      color: var(--text-primary);
+      resize: vertical;
+    }
+
+    .notes-input:focus {
+      outline: none;
+      border-color: #D0D0CE;
+    }
+
+    .notes-input::placeholder {
+      color: var(--text-faint);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--text-primary);
+      color: var(--bg-secondary);
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .layout { grid-template-columns: 200px 1fr; }
+      .sidebar-right { display: none; }
+      .suggestions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar-left { display: none; }
+      .kanban { grid-template-columns: repeat(2, 1fr); }
+      .suggestions-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">FRANKIE</div>
+    <nav class="header-nav">
+      <a href="#" class="nav-link active">Dashboard</a>
+      <a href="#" class="nav-link">Notes</a>
+      <a href="#" class="nav-link">Schedule</a>
+      <a href="#" class="nav-link">Goals</a>
+      <span class="sync-badge" id="syncTime">SYNCED —:—</span>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+      <div class="agent-card">
+        <div class="avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <img src="assets/frankie-avatar.png" alt="Frankie" class="avatar">
+          <div class="status-dot"></div>
+        </div>
+        <div class="agent-name">FRANKIE</div>
+        <div class="agent-role">Dee's #1 · Chief of Staff</div>
+        <div class="agent-status-live" id="liveStatus">
+          <span class="status-dot-live"></span>
+          <span id="statusText">Chatting with Dee 💬</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label collapsible-header" onclick="toggleCollapse('scheduleContent', this)">
+          <span>Today — Feb 1</span>
+          <span class="collapse-arrow">▼</span>
+        </div>
+        <div class="collapsible-content" id="scheduleContent">
+          <div class="schedule-list">
+            <div class="schedule-item">
+              <span class="schedule-time">📋</span>
+              <span>CA Bar Fees (March)</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-time">2:00p</span>
+              <span>Geronimo Sync</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-time">3:45p</span>
+              <span>Film: One Piece</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-time">6:00p</span>
+              <span>Film: FMAB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label collapsible-header" onclick="toggleCollapse('visionContent', this)">
+          <span>The Vision 2027</span>
+          <span class="collapse-arrow">▼</span>
+        </div>
+        <div class="collapsible-content" id="visionContent">
+          <div class="goal-item">
+            <div class="goal-header">
+              <span>Patreon → 6 figs/mo</span>
+              <span class="goal-percent">15%</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:15%"></div></div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span>Quit Telnyx</span>
+              <span class="goal-percent">5%</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:5%"></div></div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span>Goal Weight (130 lbs)</span>
+              <span class="goal-percent">96%</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:96%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        Claude Opus 4.5 · OpenClaw
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <div class="welcome">
+        <div>
+          <h1>Good morning, Dee 💜</h1>
+          <p>Sunday vibes. Filming today + bar fees deadline. Let's get it.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num" id="statTodo">0</div>
+            <div class="stat-label">To Do</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="statProgress">0</div>
+            <div class="stat-label">In Progress</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="statDone">0</div>
+            <div class="stat-label">Done</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-title">Task Board</div>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="content">Content</button>
+          <button class="filter-btn" data-filter="business">Business</button>
+          <button class="filter-btn" data-filter="health">Health</button>
+          <button class="filter-btn" data-filter="legal">Legal</button>
+          <button class="filter-btn" data-filter="empire">Empire</button>
+          <button class="filter-btn" data-filter="meesh">Meesh 💜</button>
+        </div>
+      </div>
+
+      <div class="kanban">
+        <div class="column">
+          <div class="column-head">
+            <span class="column-title">To Do</span>
+            <span class="column-count" id="countTodo">0</span>
+          </div>
+          <div class="column-body" id="colTodo" data-col="todo"></div>
+          <button class="add-btn" onclick="addTask('todo')">+ Add Task</button>
+        </div>
+        <div class="column">
+          <div class="column-head">
+            <span class="column-title">In Progress</span>
+            <span class="column-count" id="countProgress">0</span>
+          </div>
+          <div class="column-body" id="colProgress" data-col="progress"></div>
+          <button class="add-btn" onclick="addTask('progress')">+ Add Task</button>
+        </div>
+        <div class="column">
+          <div class="column-head">
+            <span class="column-title">Done</span>
+            <span class="column-count" id="countDone">0</span>
+          </div>
+          <div class="column-body" id="colDone" data-col="done"></div>
+        </div>
+        <div class="column">
+          <div class="column-head">
+            <span class="column-title">Archive</span>
+            <span class="column-count" id="countArchive">0</span>
+          </div>
+          <div class="column-body" id="colArchive" data-col="archive"></div>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <div class="suggestions-head">
+          <div class="suggestions-title">🚀 Frankie's Suggestions</div>
+          <div class="suggestions-sub">Reverse prompts based on your goals</div>
+        </div>
+        <div class="suggestions-grid">
+          <div class="suggestion" onclick="addSuggestion(this)">
+            <div class="suggestion-icon">📱</div>
+            <div class="suggestion-text">Schedule social media posts for the week</div>
+            <div class="suggestion-why">Batch content = less daily stress</div>
+          </div>
+          <div class="suggestion" onclick="addSuggestion(this)">
+            <div class="suggestion-icon">📈</div>
+            <div class="suggestion-text">Review Patreon tier structure</div>
+            <div class="suggestion-why">Optimize tiers = more MRR</div>
+          </div>
+          <div class="suggestion" onclick="addSuggestion(this)">
+            <div class="suggestion-icon">🎬</div>
+            <div class="suggestion-text">Batch YouTube descriptions</div>
+            <div class="suggestion-why">Filming W-Sun — prep now</div>
+          </div>
+          <div class="suggestion" onclick="addSuggestion(this)">
+            <div class="suggestion-icon">⚖️</div>
+            <div class="suggestion-text">Block 2hrs for Telnyx deep work</div>
+            <div class="suggestion-why">Less context switching</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar-right">
+      <div class="vday-panel collapsible-header" onclick="toggleCollapse('vdayContent', this)" style="cursor:pointer;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <span></span>
+          <span class="collapse-arrow" style="color:#F48FB1;font-size:10px;">▼</span>
+        </div>
+        <div class="collapsible-content" id="vdayContent">
+          <div class="vday-emoji">💜</div>
+          <div class="vday-num" id="vdayNum">13</div>
+          <div class="vday-label">Days Until Valentine's</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head collapsible-header" onclick="toggleCollapse('fitnessContent', this)">
+          <span>💪 Fitness</span>
+          <span class="collapse-arrow">▼</span>
+        </div>
+        <div class="panel-body collapsible-content" id="fitnessContent">
+          <div class="fitness-row">
+            <span class="fitness-label">Current</span>
+            <span class="fitness-value">135.6 lbs</span>
+          </div>
+          <div class="fitness-row">
+            <span class="fitness-label">Goal</span>
+            <span class="fitness-value">130 lbs</span>
+          </div>
+          <div class="fitness-row">
+            <span class="fitness-label">Steps Today</span>
+            <span class="fitness-value">—</span>
+          </div>
+          <div class="fitness-row">
+            <span class="fitness-label">Next Gym</span>
+            <span class="fitness-value">Mon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head collapsible-header" onclick="toggleCollapse('notesContent', this)">
+          <span>📝 Quick Notes</span>
+          <span class="collapse-arrow">▼</span>
+        </div>
+        <div class="panel-body collapsible-content" id="notesContent">
+          <textarea class="notes-input" id="notes" placeholder="Brain dump here..."></textarea>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let tasks = JSON.parse(localStorage.getItem('frankieTasks2')) || {
+      todo: [
+        { id: 1, title: "Pay CA Bar Fees (Due March)", tag: "legal", priority: "medium" },
+        { id: 2, title: "10k steps — no excuses 🏃‍♀️", tag: "health", priority: "high" },
+        { id: 3, title: "Host dashboard on GitHub Pages", tag: "empire", priority: "medium" },
+        { id: 4, title: "Review GL Reactions analytics", tag: "content", priority: "medium" },
+        { id: 5, title: "Telnyx Storage auto-backup", tag: "business", priority: "medium" },
+      ],
+      progress: [
+        { id: 7, title: "Build Frankie Dashboard", tag: "empire", priority: "high" },
+        { id: 8, title: "Geronimo Sync Call @ 2pm", tag: "content", priority: "high" },
+      ],
+      done: [
+        { id: 9, title: "Migrate to OpenClaw", tag: "empire", date: "Feb 1" },
+        { id: 10, title: "Create frankie.mdops@gmail.com", tag: "business", date: "Feb 1" },
+        { id: 11, title: "Content Center mentionPatterns", tag: "content", date: "Feb 1" },
+        { id: 12, title: "Brave Search API setup", tag: "empire", date: "Feb 1" },
+      ],
+      archive: [
+        { id: 13, title: "gog calendar OAuth fix", tag: "business", date: "Jan 31" },
+        { id: 14, title: "Full Clawdbot backup", tag: "empire", date: "Jan 31" },
+      ]
+    };
+
+    let nextId = 20, draggedEl = null, filter = 'all';
+
+    const colMap = { todo: 'colTodo', progress: 'colProgress', done: 'colDone', archive: 'colArchive' };
+
+    function render() {
+      Object.keys(colMap).forEach(key => {
+        const el = document.getElementById(colMap[key]);
+        el.innerHTML = '';
+        let list = tasks[key];
+        if (filter !== 'all') list = list.filter(t => t.tag === filter);
+        list.forEach(t => el.appendChild(makeCard(t)));
+      });
+      updateCounts();
+      localStorage.setItem('frankieTasks2', JSON.stringify(tasks));
+    }
+
+    function makeCard(t) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.draggable = true;
+      card.dataset.id = t.id;
+
+      let meta = `<span class="tag tag-${t.tag}">${t.tag}</span>`;
+      if (t.due) meta += `<span class="due-badge">⚠️ ${t.due}</span>`;
+      else if (t.priority) meta += `<span class="priority ${t.priority}">${t.priority}</span>`;
+      if (t.date) meta += `<span class="date-badge">${t.date}</span>`;
+
+      card.innerHTML = `<div class="card-title">${t.title}</div><div class="card-meta">${meta}</div>`;
+      card.addEventListener('dragstart', e => { draggedEl = card; card.classList.add('dragging'); });
+      card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedEl = null; document.querySelectorAll('.column-body').forEach(c => c.classList.remove('drag-over')); });
+      return card;
+    }
+
+    function updateCounts() {
+      ['todo','progress','done','archive'].forEach(k => {
+        document.getElementById('count' + k.charAt(0).toUpperCase() + k.slice(1)).textContent = tasks[k].length;
+      });
+      document.getElementById('statTodo').textContent = tasks.todo.length;
+      document.getElementById('statProgress').textContent = tasks.progress.length;
+      document.getElementById('statDone').textContent = tasks.done.length;
+    }
+
+    document.querySelectorAll('.column-body').forEach(zone => {
+      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+      zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('drag-over');
+        if (!draggedEl) return;
+        const id = +draggedEl.dataset.id, newCol = zone.dataset.col;
+        let task;
+        for (const k of Object.keys(tasks)) {
+          const i = tasks[k].findIndex(t => t.id === id);
+          if (i > -1) { task = tasks[k].splice(i, 1)[0]; break; }
+        }
+        if (task) {
+          if (newCol === 'done' && !task.date) { task.date = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}); delete task.due; delete task.priority; }
+          tasks[newCol].push(task);
+          render();
+          toast('Task moved');
+        }
+      });
+    });
+
+    function addTask(col) {
+      const title = prompt('Task:');
+      if (!title) return;
+      const tag = prompt('Tag (content/business/health/legal/empire/meesh):','business')||'business';
+      tasks[col].push({ id: nextId++, title, tag, priority: 'medium' });
+      render();
+      toast('Task added');
+    }
+
+    function addSuggestion(el) {
+      const txt = el.querySelector('.suggestion-text').textContent;
+      tasks.todo.unshift({ id: nextId++, title: txt, tag: 'empire', priority: 'medium' });
+      render();
+      toast('Added to To Do');
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    const notesEl = document.getElementById('notes');
+    notesEl.value = localStorage.getItem('frankieNotes2') || '';
+    notesEl.addEventListener('input', () => localStorage.setItem('frankieNotes2', notesEl.value));
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1800);
+    }
+
+    function sync() {
+      const t = new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true}).toUpperCase();
+      document.getElementById('syncTime').textContent = 'SYNCED ' + t;
+    }
+
+    function vday() {
+      const d = Math.ceil((new Date('2026-02-14') - new Date()) / 864e5);
+      document.getElementById('vdayNum').textContent = d;
+    }
+
+    // Collapsible sections
+    function toggleCollapse(contentId, headerEl) {
+      const content = document.getElementById(contentId);
+      const arrow = headerEl.querySelector('.collapse-arrow');
+      content.classList.toggle('collapsed');
+      arrow.classList.toggle('collapsed');
+      
+      // Save state to localStorage
+      const collapsed = JSON.parse(localStorage.getItem('frankieCollapsed') || '{}');
+      collapsed[contentId] = content.classList.contains('collapsed');
+      localStorage.setItem('frankieCollapsed', JSON.stringify(collapsed));
+    }
+
+    // Restore collapse state on load
+    function restoreCollapseState() {
+      const collapsed = JSON.parse(localStorage.getItem('frankieCollapsed') || '{}');
+      Object.keys(collapsed).forEach(id => {
+        if (collapsed[id]) {
+          const content = document.getElementById(id);
+          const header = content?.previousElementSibling;
+          if (content && header) {
+            content.classList.add('collapsed');
+            header.querySelector('.collapse-arrow')?.classList.add('collapsed');
+          }
+        }
+      });
+    }
+
+    // Remove Valentine's task if it exists (keep it secret!)
+    Object.keys(tasks).forEach(col => {
+      tasks[col] = tasks[col].filter(t => !t.title.toLowerCase().includes('valentine'));
+    });
+    
+    // Fetch Frankie's live status
+    async function updateFrankieStatus() {
+      try {
+        const res = await fetch('frankie-status.json?' + Date.now());
+        const data = await res.json();
+        if (data.status) {
+          document.getElementById('statusText').textContent = data.status;
+        }
+      } catch (e) {
+        // File not accessible (local file:// or not found) - keep default
+      }
+    }
+
+    render(); sync(); vday(); restoreCollapseState(); updateFrankieStatus();
+    setInterval(sync, 30000);
+    setInterval(updateFrankieStatus, 10000); // Check every 10 seconds
+  </script>
+</body>
+</html>
