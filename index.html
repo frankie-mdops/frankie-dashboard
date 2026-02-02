@@ -1107,6 +1107,9 @@
       card.innerHTML = `<div class="card-title">${t.title}</div><div class="card-meta">${meta}</div>`;
       card.addEventListener('dragstart', e => { draggedEl = card; card.classList.add('dragging'); });
       card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedEl = null; document.querySelectorAll('.column-body').forEach(c => c.classList.remove('drag-over')); });
+      card.addEventListener('dblclick', () => editTask(t.id));
+      card.style.cursor = 'pointer';
+      card.title = 'Double-click to edit';
       return card;
     }
 
@@ -1148,6 +1151,35 @@
       tasks[col].push({ id: nextId++, title, tag, priority: 'medium' });
       render();
       toast('Task added');
+    }
+
+    function editTask(id) {
+      let task, taskCol;
+      for (const col of Object.keys(tasks)) {
+        const found = tasks[col].find(t => t.id === id);
+        if (found) { task = found; taskCol = col; break; }
+      }
+      if (!task) return;
+      
+      const action = prompt('Edit task: "' + task.title + '"\n\nType:\n• New title to rename\n• "delete" to remove\n• "tag" to change tag\n• Cancel to keep as-is');
+      
+      if (action === null) return;
+      if (action.toLowerCase() === 'delete') {
+        tasks[taskCol] = tasks[taskCol].filter(t => t.id !== id);
+        render();
+        toast('Task deleted');
+      } else if (action.toLowerCase() === 'tag') {
+        const newTag = prompt('New tag (content/business/health/legal/empire/meesh):', task.tag);
+        if (newTag) {
+          task.tag = newTag.toLowerCase();
+          render();
+          toast('Tag updated');
+        }
+      } else if (action.trim()) {
+        task.title = action;
+        render();
+        toast('Task updated');
+      }
     }
 
     function addSuggestion(el) {
