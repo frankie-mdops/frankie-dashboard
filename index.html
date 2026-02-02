@@ -1611,9 +1611,208 @@
       }
     }
 
-    render(); sync(); vday(); updateTodayDate(); restoreCollapseState(); updateFrankieStatus();
+    // ═══════════════════════════════════════════════════════════
+    // GOOGLE CALENDAR INTEGRATION
+    // ═══════════════════════════════════════════════════════════
+    
+    let calendarData = null;
+    
+    async function fetchCalendarData() {
+      try {
+        const res = await fetch('calendar-events.json?' + Date.now());
+        if (!res.ok) throw new Error('Calendar data not found');
+        calendarData = await res.json();
+        renderCalendar();
+        updateCalendarSyncInfo();
+      } catch (e) {
+        console.warn('Calendar fetch failed:', e);
+        document.getElementById('todayTimeline').innerHTML = 
+          '<div class="cal-empty">Calendar unavailable</div>';
+      }
+    }
+    
+    function formatEventTime(event) {
+      if (event.start.date) {
+        return { time: 'ALL DAY', isAllDay: true };
+      }
+      const dt = new Date(event.start.dateTime);
+      const hours = dt.getHours();
+      const mins = dt.getMinutes();
+      const ampm = hours >= 12 ? 'p' : 'a';
+      const h = hours % 12 || 12;
+      const m = mins > 0 ? ':' + mins.toString().padStart(2, '0') : '';
+      return { time: h + m + ampm, isAllDay: false };
+    }
+    
+    function getEventDate(event) {
+      if (event.start.date) {
+        return new Date(event.start.date + 'T00:00:00');
+      }
+      return new Date(event.start.dateTime);
+    }
+    
+    function isSameDay(d1, d2) {
+      return d1.getFullYear() === d2.getFullYear() &&
+             d1.getMonth() === d2.getMonth() &&
+             d1.getDate() === d2.getDate();
+    }
+    
+    function createEventEl(event, calendarId) {
+      const { time, isAllDay } = formatEventTime(event);
+      const calClass = 'cal-' + calendarId.replace(/-/g, '-');
+      
+      const el = document.createElement('a');
+      el.className = `cal-event ${calClass} ${isAllDay ? 'all-day' : ''}`;
+      el.href = event.htmlLink || '#';
+      el.target = '_blank';
+      el.rel = 'noopener';
+      if (event.colorId) el.dataset.color = event.colorId;
+      
+      const timeEl = document.createElement('span');
+      timeEl.className = `cal-event-time ${isAllDay ? 'all-day' : ''}`;
+      timeEl.textContent = time;
+      el.appendChild(timeEl);
+      
+      const contentEl = document.createElement('div');
+      contentEl.className = 'cal-event-content';
+      
+      const titleEl = document.createElement('div');
+      titleEl.className = 'cal-event-title';
+      titleEl.textContent = event.summary || '(No title)';
+      titleEl.title = event.summary || '';
+      contentEl.appendChild(titleEl);
+      
+      if (event.location) {
+        const locEl = document.createElement('div');
+        locEl.className = 'cal-event-location';
+        locEl.textContent = '📍 ' + event.location.split(',')[0];
+        contentEl.appendChild(locEl);
+      }
+      
+      el.appendChild(contentEl);
+      return el;
+    }
+    
+    function renderCalendar() {
+      if (!calendarData || !calendarData.calendars) return;
+      
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      // Collect all events with their calendar source
+      const allEvents = [];
+      calendarData.calendars.forEach(cal => {
+        (cal.events || []).forEach(event => {
+          if (event.status !== 'cancelled') {
+            allEvents.push({ ...event, calendarId: cal.id, calendarName: cal.name });
+          }
+        });
+      });
+      
+      // Sort by date/time
+      allEvents.sort((a, b) => {
+        const dateA = getEventDate(a);
+        const dateB = getEventDate(b);
+        return dateA - dateB;
+      });
+      
+      // Today's events
+      const todayEvents = allEvents.filter(e => isSameDay(getEventDate(e), today));
+      const todayTimeline = document.getElementById('todayTimeline');
+      todayTimeline.innerHTML = '';
+      
+      if (todayEvents.length === 0) {
+        todayTimeline.innerHTML = '<div class="cal-empty">No events today ✨</div>';
+      } else {
+        // Separate all-day and timed events
+        const allDayEvents = todayEvents.filter(e => e.start.date);
+        const timedEvents = todayEvents.filter(e => e.start.dateTime);
+        
+        // Render all-day first, then timed
+        [...allDayEvents, ...timedEvents].forEach(event => {
+          todayTimeline.appendChild(createEventEl(event, event.calendarId));
+        });
+      }
+      
+      // Upcoming events (tomorrow and beyond, grouped by day)
+      const upcomingEl = document.getElementById('upcomingEvents');
+      upcomingEl.innerHTML = '';
+      
+      const upcomingEvents = allEvents.filter(e => {
+        const eventDate = getEventDate(e);
+        return eventDate > today && !isSameDay(eventDate, today);
+      });
+      
+      if (upcomingEvents.length === 0) {
+        upcomingEl.innerHTML = '<div class="cal-empty">No upcoming events</div>';
+        return;
+      }
+      
+      // Group by day (limit to 7 days out)
+      const maxDate = new Date(today);
+      maxDate.setDate(maxDate.getDate() + 7);
+      
+      const dayGroups = {};
+      upcomingEvents.forEach(event => {
+        const eventDate = getEventDate(event);
+        if (eventDate > maxDate) return;
+        
+        const dayKey = eventDate.toISOString().split('T')[0];
+        if (!dayGroups[dayKey]) dayGroups[dayKey] = [];
+        dayGroups[dayKey].push(event);
+      });
+      
+      Object.keys(dayGroups).sort().slice(0, 5).forEach(dayKey => {
+        const events = dayGroups[dayKey];
+        const date = new Date(dayKey + 'T12:00:00');
+        
+        const groupEl = document.createElement('div');
+        groupEl.className = 'cal-day-group';
+        
+        const headerEl = document.createElement('div');
+        headerEl.className = 'cal-day-header';
+        if (isSameDay(date, tomorrow)) {
+          headerEl.classList.add('is-tomorrow');
+          headerEl.textContent = 'Tomorrow';
+        } else {
+          headerEl.textContent = date.toLocaleDateString('en-US', { 
+            weekday: 'short', month: 'short', day: 'numeric' 
+          });
+        }
+        groupEl.appendChild(headerEl);
+        
+        events.slice(0, 4).forEach(event => {
+          groupEl.appendChild(createEventEl(event, event.calendarId));
+        });
+        
+        if (events.length > 4) {
+          const moreEl = document.createElement('div');
+          moreEl.className = 'cal-empty';
+          moreEl.textContent = `+${events.length - 4} more`;
+          groupEl.appendChild(moreEl);
+        }
+        
+        upcomingEl.appendChild(groupEl);
+      });
+    }
+    
+    function updateCalendarSyncInfo() {
+      if (!calendarData || !calendarData.lastUpdated) return;
+      const syncEl = document.getElementById('calendarSyncInfo');
+      const lastUpdated = new Date(calendarData.lastUpdated);
+      const timeStr = lastUpdated.toLocaleTimeString('en-US', { 
+        hour: 'numeric', minute: '2-digit', hour12: true 
+      });
+      syncEl.innerHTML = `<span class="sync-dot"></span>Synced ${timeStr}`;
+    }
+
+    render(); sync(); vday(); updateTodayDate(); restoreCollapseState(); updateFrankieStatus(); fetchCalendarData();
     setInterval(sync, 30000);
     setInterval(updateFrankieStatus, 10000); // Check every 10 seconds
+    setInterval(fetchCalendarData, 300000); // Refresh calendar every 5 minutes
   </script>
 </body>
 </html>
