@@ -1951,13 +1951,13 @@
       ],
       progress: [],
       done: [
-        { id: 6, title: "Built Meeting Prep Bot", tag: "legal", date: "Completed at 02:50 PST" },
-        { id: 7, title: "Built Contract Review Bot (prompts + templates)", tag: "legal", date: "Completed at 02:45 PST" },
-        { id: 8, title: "Created LEGAL-BOTS-READY-TO-BUILD.md", tag: "legal", date: "Completed at 02:35 PST" },
-        { id: 9, title: "Set up ~/clawd/bots/ folder structure", tag: "empire", date: "Completed at 02:28 PST" },
-        { id: 10, title: "Deployed dashboard to Vercel", tag: "empire", date: "Completed at 01:30 PST" },
-        { id: 11, title: "Google Calendar integration", tag: "empire", date: "Completed at 01:15 PST" },
-        { id: 12, title: "JS password protection", tag: "empire", date: "Completed at 00:45 PST" },
+        { id: 6, title: "Built Meeting Prep Bot", tag: "legal", date: "Completed at 2:50 AM on 02/02/2026" },
+        { id: 7, title: "Built Contract Review Bot (prompts + templates)", tag: "legal", date: "Completed at 2:45 AM on 02/02/2026" },
+        { id: 8, title: "Created LEGAL-BOTS-READY-TO-BUILD.md", tag: "legal", date: "Completed at 2:35 AM on 02/02/2026" },
+        { id: 9, title: "Set up ~/clawd/bots/ folder structure", tag: "empire", date: "Completed at 2:28 AM on 02/02/2026" },
+        { id: 10, title: "Deployed dashboard to Vercel", tag: "empire", date: "Completed at 1:30 AM on 02/02/2026" },
+        { id: 11, title: "Google Calendar integration", tag: "empire", date: "Completed at 1:15 AM on 02/02/2026" },
+        { id: 12, title: "JS password protection", tag: "empire", date: "Completed at 12:45 AM on 02/02/2026" },
       ],
       archive: [
         { id: 13, title: "Migrate to OpenClaw", tag: "empire", date: "Feb 1" },
@@ -2148,7 +2148,10 @@
             const mins = now.getMinutes().toString().padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             const h = hours % 12 || 12;
-            task.date = `Completed at ${h}:${mins} PST`; 
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const year = now.getFullYear();
+            task.date = `Completed at ${h}:${mins} ${ampm} on ${month}/${day}/${year}`; 
             delete task.due; 
             delete task.priority; 
           }
