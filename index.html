@@ -6,7 +6,7 @@
   <title>FRANKIE — Dee's Mission Control</title>
   <script>
     (function() {
-      const CORRECT_PASSWORD = 'DeeAgent7913';
+      const CORRECT_PASSWORD = '7913';
       const STORAGE_KEY = 'frankie_authenticated';
       
       // Check if already authenticated this session
@@ -828,7 +828,6 @@
         <div class="avatar-wrapper">
           <div class="avatar-ring"></div>
           <img src="assets/frankie-avatar.png" alt="Frankie" class="avatar">
-          <div class="status-dot"></div>
         </div>
         <div class="agent-name">FRANKIE</div>
         <div class="agent-role">Dee's #1 · Chief of Staff</div>
@@ -840,7 +839,7 @@
 
       <div class="sidebar-section">
         <div class="section-label collapsible-header" onclick="toggleCollapse('scheduleContent', this)">
-          <span>Today — Feb 1</span>
+          <span id="todayDate">Today — Feb 1</span>
           <span class="collapse-arrow">▼</span>
         </div>
         <div class="collapsible-content" id="scheduleContent">
@@ -1085,6 +1084,38 @@
       localStorage.setItem('frankieTasks2', JSON.stringify(tasks));
     }
 
+    function moveTask(id, direction) {
+      for (const col of Object.keys(tasks)) {
+        const idx = tasks[col].findIndex(t => t.id === id);
+        if (idx > -1) {
+          const newIdx = idx + direction;
+          if (newIdx >= 0 && newIdx < tasks[col].length) {
+            const temp = tasks[col][idx];
+            tasks[col][idx] = tasks[col][newIdx];
+            tasks[col][newIdx] = temp;
+            saveTasks();
+            render();
+            toast(direction < 0 ? 'Moved up' : 'Moved down');
+          }
+          return;
+        }
+      }
+    }
+
+    function deleteTask(id) {
+      if (!confirm('Delete this task?')) return;
+      for (const col of Object.keys(tasks)) {
+        const idx = tasks[col].findIndex(t => t.id === id);
+        if (idx > -1) {
+          tasks[col].splice(idx, 1);
+          saveTasks();
+          render();
+          toast('Deleted');
+          return;
+        }
+      }
+    }
+
     function render() {
       Object.keys(colMap).forEach(key => {
         const el = document.getElementById(colMap[key]);
@@ -1125,40 +1156,52 @@
       const metaEl = document.createElement('div');
       metaEl.className = 'card-meta';
       
-      // Editable tag
-      const tagEl = document.createElement('span');
-      tagEl.className = `tag tag-${t.tag}`;
-      tagEl.textContent = t.tag;
-      tagEl.style.cursor = 'pointer';
-      tagEl.title = 'Click to change tag';
+      // Tag dropdown
+      const tagSelect = document.createElement('select');
+      tagSelect.className = `tag-select tag-${t.tag}`;
+      tagSelect.style.cssText = 'border:none;background:transparent;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer;padding:2px 4px;border-radius:4px;';
       const tags = ['content','business','health','legal','empire','meesh'];
-      tagEl.addEventListener('click', (e) => {
+      tags.forEach(tag => {
+        const opt = document.createElement('option');
+        opt.value = tag;
+        opt.textContent = tag;
+        if (tag === t.tag) opt.selected = true;
+        tagSelect.appendChild(opt);
+      });
+      tagSelect.addEventListener('change', (e) => {
         e.stopPropagation();
-        const idx = tags.indexOf(t.tag);
-        t.tag = tags[(idx + 1) % tags.length];
+        t.tag = tagSelect.value;
         saveTasks();
         render();
         toast('Tag: ' + t.tag);
       });
-      metaEl.appendChild(tagEl);
+      tagSelect.addEventListener('mousedown', () => { card.draggable = false; });
+      tagSelect.addEventListener('blur', () => { card.draggable = true; });
+      metaEl.appendChild(tagSelect);
       
-      // Editable priority (if exists and not done)
+      // Priority dropdown (if exists and not done)
       if (t.priority && !t.date) {
-        const prioEl = document.createElement('span');
-        prioEl.className = `priority ${t.priority}`;
-        prioEl.textContent = t.priority;
-        prioEl.style.cursor = 'pointer';
-        prioEl.title = 'Click to change priority';
+        const prioSelect = document.createElement('select');
+        prioSelect.className = `priority-select priority-${t.priority}`;
+        prioSelect.style.cssText = 'border:none;background:transparent;font-size:10px;font-weight:500;cursor:pointer;padding:2px 4px;border-radius:4px;margin-left:4px;';
         const prios = ['low','medium','high'];
-        prioEl.addEventListener('click', (e) => {
+        prios.forEach(prio => {
+          const opt = document.createElement('option');
+          opt.value = prio;
+          opt.textContent = prio;
+          if (prio === t.priority) opt.selected = true;
+          prioSelect.appendChild(opt);
+        });
+        prioSelect.addEventListener('change', (e) => {
           e.stopPropagation();
-          const idx = prios.indexOf(t.priority);
-          t.priority = prios[(idx + 1) % prios.length];
+          t.priority = prioSelect.value;
           saveTasks();
           render();
           toast('Priority: ' + t.priority);
         });
-        metaEl.appendChild(prioEl);
+        prioSelect.addEventListener('mousedown', () => { card.draggable = false; });
+        prioSelect.addEventListener('blur', () => { card.draggable = true; });
+        metaEl.appendChild(prioSelect);
       }
       
       // Due date badge (if exists)
@@ -1178,6 +1221,41 @@
       }
       
       card.appendChild(metaEl);
+      
+      // Card actions row (move up/down, delete)
+      const actionsEl = document.createElement('div');
+      actionsEl.className = 'card-actions';
+      actionsEl.style.cssText = 'display:flex;gap:4px;margin-top:8px;opacity:0;transition:opacity 0.2s;';
+      
+      const btnStyle = 'background:#f0f0f0;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:11px;color:#666;';
+      
+      const upBtn = document.createElement('button');
+      upBtn.textContent = '↑';
+      upBtn.style.cssText = btnStyle;
+      upBtn.title = 'Move up';
+      upBtn.addEventListener('click', (e) => { e.stopPropagation(); moveTask(t.id, -1); });
+      actionsEl.appendChild(upBtn);
+      
+      const downBtn = document.createElement('button');
+      downBtn.textContent = '↓';
+      downBtn.style.cssText = btnStyle;
+      downBtn.title = 'Move down';
+      downBtn.addEventListener('click', (e) => { e.stopPropagation(); moveTask(t.id, 1); });
+      actionsEl.appendChild(downBtn);
+      
+      const delBtn = document.createElement('button');
+      delBtn.textContent = '✕';
+      delBtn.style.cssText = btnStyle + 'color:#e53e3e;';
+      delBtn.title = 'Delete task';
+      delBtn.addEventListener('click', (e) => { e.stopPropagation(); deleteTask(t.id); });
+      actionsEl.appendChild(delBtn);
+      
+      card.appendChild(actionsEl);
+      
+      // Show actions on hover
+      card.addEventListener('mouseenter', () => { actionsEl.style.opacity = '1'; });
+      card.addEventListener('mouseleave', () => { actionsEl.style.opacity = '0'; });
+      
       card.addEventListener('dragstart', e => { draggedEl = card; card.classList.add('dragging'); });
       card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedEl = null; document.querySelectorAll('.column-body').forEach(c => c.classList.remove('drag-over')); });
       return card;
@@ -1289,6 +1367,12 @@
       document.getElementById('vdayNum').textContent = d;
     }
 
+    function updateTodayDate() {
+      const today = new Date();
+      const formatted = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      document.getElementById('todayDate').textContent = 'Today — ' + formatted;
+    }
+
     // Collapsible sections
     function toggleCollapse(contentId, headerEl) {
       const content = document.getElementById(contentId);
@@ -1335,7 +1419,7 @@
       }
     }
 
-    render(); sync(); vday(); restoreCollapseState(); updateFrankieStatus();
+    render(); sync(); vday(); updateTodayDate(); restoreCollapseState(); updateFrankieStatus();
     setInterval(sync, 30000);
     setInterval(updateFrankieStatus, 10000); // Check every 10 seconds
   </script>
