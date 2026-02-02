@@ -1,0 +1,1724 @@
+{
+  "lastUpdated": "2026-02-02T08:41:12Z",
+  "calendars": [
+    {
+      "id": "md-personal",
+      "name": "M&D Personal",
+      "color": "#92e1c0",
+      "events": [
+  {
+    "created": "2025-02-03T05:12:42.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com"
+    },
+    "end": {
+      "date": "2026-02-03"
+    },
+    "etag": "\"3477119124374000\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=M29uMWxkbGxlc201MzFtamw1Ym5mb2lkcnFfMjAyNjAyMDIgNzRhMGRkNTFjMTQ2YTMyODJkOGNkYjIwMTA5MzFjNDI3YWUxYzdhZDQ3MjlhODg1N2ZmMzRmNjc2ZmJmYmZmNkBn",
+    "iCalUID": "3on1ldllesm531mjl5bnfoidrq@google.com",
+    "id": "3on1ldllesm531mjl5bnfoidrq_20260202",
+    "kind": "calendar#event",
+    "organizer": {
+      "displayName": "M&D: PERSONAL",
+      "email": "74a0dd51c146a3282d8cdb2010931c427ae1c7ad4729a8857ff34f676fbfbff6@group.calendar.google.com",
+      "self": true
+    },
+    "originalStartTime": {
+      "date": "2026-02-02"
+    },
+    "recurringEventId": "3on1ldllesm531mjl5bnfoidrq",
+    "reminders": {},
+    "start": {
+      "date": "2026-02-02"
+    },
+    "status": "confirmed",
+    "summary": "Gabi's bday",
+    "transparency": "transparent",
+    "updated": "2025-02-03T05:12:42.187Z"
+  },
+  {
+    "created": "2026-01-22T16:25:58.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com"
+    },
+    "description": "Betty to clean on Mondays anytime after 2pm.",
+    "end": {
+      "dateTime": "2026-02-02T16:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3538198316797406\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NGdvMWRscm0wbm83NHBmcmU5bjA1YWQ2cXEgNzRhMGRkNTFjMTQ2YTMyODJkOGNkYjIwMTA5MzFjNDI3YWUxYzdhZDQ3MjlhODg1N2ZmMzRmNjc2ZmJmYmZmNkBn",
+    "iCalUID": "4go1dlrm0no74pfre9n05ad6qq@google.com",
+    "id": "4go1dlrm0no74pfre9n05ad6qq",
+    "kind": "calendar#event",
+    "organizer": {
+      "displayName": "M&D: PERSONAL",
+      "email": "74a0dd51c146a3282d8cdb2010931c427ae1c7ad4729a8857ff34f676fbfbff6@group.calendar.google.com",
+      "self": true
+    },
+    "reminders": {
+      "overrides": [
+        {
+          "method": "popup",
+          "minutes": 60
+        },
+        {
+          "method": "popup",
+          "minutes": 1440
+        }
+      ]
+    },
+    "start": {
+      "dateTime": "2026-02-02T14:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Clean apt",
+    "updated": "2026-01-22T16:25:58.398Z"
+  },
+  {
+    "created": "2026-01-28T22:56:13.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com"
+    },
+    "end": {
+      "dateTime": "2026-02-04T10:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539281947363422\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MDZqMXA0czVhdjIxazdub3MzaWthcXJoaTkgNzRhMGRkNTFjMTQ2YTMyODJkOGNkYjIwMTA5MzFjNDI3YWUxYzdhZDQ3MjlhODg1N2ZmMzRmNjc2ZmJmYmZmNkBn",
+    "iCalUID": "06j1p4s5av21k7nos3ikaqrhi9@google.com",
+    "id": "06j1p4s5av21k7nos3ikaqrhi9",
+    "kind": "calendar#event",
+    "location": "15333 Culver Drive Suite 220 Irvine, CA 92604",
+    "organizer": {
+      "displayName": "M&D: PERSONAL",
+      "email": "74a0dd51c146a3282d8cdb2010931c427ae1c7ad4729a8857ff34f676fbfbff6@group.calendar.google.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "start": {
+      "dateTime": "2026-02-04T09:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Lash Fill (Elegant Volume) ✨ at Elegant Lashes By Katie - Irvine",
+    "updated": "2026-01-28T22:56:13.681Z"
+  },
+  {
+    "created": "2026-01-30T22:48:31.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com"
+    },
+    "end": {
+      "dateTime": "2026-02-09T13:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539626623907742\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=aWZodGw5MHN1MnJnN2ZiYW11YmRxMTVtNWcgNzRhMGRkNTFjMTQ2YTMyODJkOGNkYjIwMTA5MzFjNDI3YWUxYzdhZDQ3MjlhODg1N2ZmMzRmNjc2ZmJmYmZmNkBn",
+    "iCalUID": "ifhtl90su2rg7fbamubdq15m5g@google.com",
+    "id": "ifhtl90su2rg7fbamubdq15m5g",
+    "kind": "calendar#event",
+    "organizer": {
+      "displayName": "M&D: PERSONAL",
+      "email": "74a0dd51c146a3282d8cdb2010931c427ae1c7ad4729a8857ff34f676fbfbff6@group.calendar.google.com",
+      "self": true
+    },
+    "reminders": {
+      "overrides": [
+        {
+          "method": "popup",
+          "minutes": 60
+        },
+        {
+          "method": "popup",
+          "minutes": 15
+        }
+      ]
+    },
+    "start": {
+      "dateTime": "2026-02-09T13:15:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "RMA: Angie financial call",
+    "updated": "2026-01-30T22:48:31.953Z"
+  }
+]
+    },
+    {
+      "id": "md-content",
+      "name": "M&D Content",
+      "color": "#9fe1e7",
+      "events": [
+  {
+    "colorId": "2",
+    "created": "2026-01-03T17:34:36.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-03"
+    },
+    "etag": "\"3538049438408254\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=Mm5xcmMxcTRtM2oyZmJvYmNnbzF2czUxN2QgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2nqrc1q4m3j2fbobcgo1vs517d@google.com",
+    "id": "2nqrc1q4m3j2fbobcgo1vs517d",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 5,
+    "start": {
+      "date": "2026-02-02"
+    },
+    "status": "confirmed",
+    "summary": "POST: Heated Rivalry Ep. 3",
+    "transparency": "transparent",
+    "updated": "2026-01-21T19:45:19.204Z"
+  },
+  {
+    "created": "2025-11-25T01:04:17.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-04"
+    },
+    "etag": "\"3538049441594078\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MmpmaHY2bzdpbGFqNDU3cDZlYjc1ODUybTMgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2jfhv6o7ilaj457p6eb75852m3@google.com",
+    "id": "2jfhv6o7ilaj457p6eb75852m3",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 9,
+    "start": {
+      "date": "2026-02-03"
+    },
+    "status": "confirmed",
+    "summary": "POST: FMAB 1x10",
+    "transparency": "transparent",
+    "updated": "2026-01-21T19:45:20.797Z"
+  },
+  {
+    "colorId": "5",
+    "created": "2026-01-10T06:55:49.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-03T16:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539163705798942\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MmRvaHJjZDk3YTF2ODYwcGZ2Z2gxaHJ2MmogZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2dohrcd97a1v860pfvgh1hrv2j@google.com",
+    "id": "2dohrcd97a1v860pfvgh1hrv2j",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-03T14:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Fallout 2x8",
+    "updated": "2026-01-28T06:30:52.899Z"
+  },
+  {
+    "created": "2026-01-20T03:08:16.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-03T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3540030343999742\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MGg0dWNyZTVwNjFhNGI0cXJrOHZsM3E5N3EgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "0h4ucre5p61a4b4qrk8vl3q97q@google.com",
+    "id": "0h4ucre5p61a4b4qrk8vl3q97q",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 5,
+    "start": {
+      "dateTime": "2026-02-03T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x20",
+    "updated": "2026-02-02T06:52:51.999Z"
+  },
+  {
+    "colorId": "2",
+    "created": "2026-01-03T17:34:59.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-05"
+    },
+    "etag": "\"3538049453150558\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NjVnOXM2cnRwMW5pNjhtZjI2OGdvaXViZ3QgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "65g9s6rtp1ni68mf268goiubgt@google.com",
+    "id": "65g9s6rtp1ni68mf268goiubgt",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 5,
+    "start": {
+      "date": "2026-02-04"
+    },
+    "status": "confirmed",
+    "summary": "POST: Heated Rivalry Ep. 4",
+    "transparency": "transparent",
+    "updated": "2026-01-21T19:45:26.575Z"
+  },
+  {
+    "colorId": "4",
+    "created": "2026-01-10T06:54:42.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-04T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539860213568958\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NXMzYnJsZm9oaWRhcW44Y3JpMjYwamNjMTMgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "5s3brlfohidaqn8cri260jcc13@google.com",
+    "id": "5s3brlfohidaqn8cri260jcc13",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 7,
+    "start": {
+      "dateTime": "2026-02-04T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Love Design Ep. 9",
+    "updated": "2026-02-01T07:15:06.784Z"
+  },
+  {
+    "created": "2026-01-28T20:27:41.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-04T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3540030346605534\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NXE2czMyNjlsMjljbzJtdDFjMWFhMG9tN2QgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "5q6s3269l29co2mt1c1aa0om7d@google.com",
+    "id": "5q6s3269l29co2mt1c1aa0om7d",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-04T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x21",
+    "updated": "2026-02-02T06:52:53.302Z"
+  },
+  {
+    "colorId": "5",
+    "created": "2025-11-10T21:27:45.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-06"
+    },
+    "etag": "\"3532036484023390\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MjA5OGRtZG00MDBlYjdvaDVxb2JoZjU4c2wgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2098dmdm400eb7oh5qobhf58sl@google.com",
+    "id": "2098dmdm400eb7oh5qobhf58sl",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 5,
+    "start": {
+      "date": "2026-02-05"
+    },
+    "status": "confirmed",
+    "summary": "POST: Fallout 2x8",
+    "transparency": "transparent",
+    "updated": "2025-12-18T00:37:22.011Z"
+  },
+  {
+    "colorId": "3",
+    "created": "2026-01-10T06:57:56.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-05T16:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3536056663336254\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NHRkdHJsYzQ1MTd2OWZ0NG5mMjFldGFwNmsgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "4tdtrlc4517v9ft4nf21etap6k@google.com",
+    "id": "4tdtrlc4517v9ft4nf21etap6k",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-05T14:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: JJK 3x5",
+    "updated": "2026-01-10T06:58:51.668Z"
+  },
+  {
+    "created": "2026-02-02T06:52:30.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-05T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3540030300998334\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=M2k1ZXFuaTZzNzQ3aWtlZXIxZzQwMWJkODUgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "3i5eqni6s747ikeer1g401bd85@google.com",
+    "id": "3i5eqni6s747ikeer1g401bd85",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "start": {
+      "dateTime": "2026-02-05T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x22",
+    "updated": "2026-02-02T06:52:30.499Z"
+  },
+  {
+    "colorId": "3",
+    "created": "2025-12-04T00:18:43.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-07"
+    },
+    "etag": "\"3538937004765694\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=N2w2azNjOXJ1bG83b2JkMTdzNWdlanFqcjggZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7l6k3c9rulo7obd17s5gejqjr8@google.com",
+    "id": "7l6k3c9rulo7obd17s5gejqjr8",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 2,
+    "start": {
+      "date": "2026-02-06"
+    },
+    "status": "confirmed",
+    "summary": "POST: JJK 3x5",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:01:42.382Z"
+  },
+  {
+    "colorId": "1",
+    "created": "2026-01-10T06:45:40.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-06T16:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3536055233882494\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MTFmZ2c5NzNzY28xb2VoZHNxNmZyZGI3b2cgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "11fgg973sco1oehdsq6frdb7og@google.com",
+    "id": "11fgg973sco1oehdsq6frdb7og",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-06T14:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Frieren 2x4",
+    "updated": "2026-01-10T06:46:56.941Z"
+  },
+  {
+    "colorId": "4",
+    "created": "2026-01-10T06:58:47.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-06T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3537759390118078\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NmNvcDdhdXFidDI5Z3QycnZrbjRtMGMxaWggZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "6cop7auqbt29gt2rvkn4m0c1ih@google.com",
+    "id": "6cop7auqbt29gt2rvkn4m0c1ih",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-06T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Love Design Ep. 10",
+    "updated": "2026-01-20T03:28:15.059Z"
+  },
+  {
+    "attendees": [
+      {
+        "email": "deniseefer@gmail.com",
+        "organizer": true,
+        "responseStatus": "accepted"
+      },
+      {
+        "email": "deeandmeesh@gmail.com",
+        "responseStatus": "accepted",
+        "self": true
+      }
+    ],
+    "created": "2026-01-15T02:11:07.000Z",
+    "creator": {
+      "email": "deniseefer@gmail.com"
+    },
+    "description": "To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar",
+    "end": {
+      "dateTime": "2026-02-06T19:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "endTimeUnspecified": true,
+    "etag": "\"3536886626840638\"",
+    "eventType": "fromGmail",
+    "guestsCanInviteOthers": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=bmFoc2RzMGhma3YzYThpdGpoMWUwZzQ3dDggZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "nahsds0hfkv3a8itjh1e0g47t8@google.com",
+    "id": "nahsds0hfkv3a8itjh1e0g47t8",
+    "kind": "calendar#event",
+    "location": "Todos Santos, 22322 El Paseo, Rancho Santa Margarita, CA, 92688-5801, United States",
+    "organizer": {
+      "email": "deniseefer@gmail.com"
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "start": {
+      "dateTime": "2026-02-06T18:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Reservation at Todos Santos",
+    "transparency": "transparent",
+    "updated": "2026-01-15T02:15:13.420Z"
+  },
+  {
+    "colorId": "1",
+    "created": "2025-11-25T01:06:08.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-08"
+    },
+    "etag": "\"3528065547346334\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NTFpYTd1ZjRubjcxcmY3c2IwZDRwdTd2NDEgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "51ia7uf4nn71rf7sb0d4pu7v41@google.com",
+    "id": "51ia7uf4nn71rf7sb0d4pu7v41",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "start": {
+      "date": "2026-02-07"
+    },
+    "status": "confirmed",
+    "summary": "POST: Frieren 2x4",
+    "transparency": "transparent",
+    "updated": "2025-11-25T01:06:13.673Z"
+  },
+  {
+    "created": "2026-01-12T00:45:46.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "description": "Celebrate my 30th birthday with me at our neighborhood clubhouse! Food and drinks flowing all night — come ready to eat, drink, and celebrate a new decade together 🖤\nFull details at: https://partiful.com/e/Sp8aRUailtGbWfz7InuS",
+    "end": {
+      "dateTime": "2026-02-07T20:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3536357493207870\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NDVhZnZlOXZzc205ZTc2aG01cHNrazZ2NHIgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "45afve9vssm9e76hm5pskk6v4r@google.com",
+    "id": "45afve9vssm9e76hm5pskk6v4r",
+    "kind": "calendar#event",
+    "location": "Parasol Park, 375 Magnet, Irvine, CA",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "start": {
+      "dateTime": "2026-02-07T16:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Hillary's Birthday Celebration",
+    "updated": "2026-01-12T00:45:46.603Z"
+  },
+  {
+    "colorId": "10",
+    "created": "2026-01-28T21:59:29.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-07T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539282568654174\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MjJzdDZhbWhodTlrMGw3OWNxazE4YTdrbnAgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "22st6amhhu9k0l79cqk18a7knp@google.com",
+    "id": "22st6amhhu9k0l79cqk18a7knp",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-07T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Four Elements(Earth) Ep. 2",
+    "updated": "2026-01-28T23:01:24.327Z"
+  },
+  {
+    "colorId": "4",
+    "created": "2026-01-20T03:28:55.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-07T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539275748686334\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NTdycmpjaDcwMWNpbXU5NW05dGNxa2pvbzIgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "57rrjch701cimu95m9tcqkjoo2@google.com",
+    "id": "57rrjch701cimu95m9tcqkjoo2",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-07T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: TLP Ep. 10",
+    "updated": "2026-01-28T22:04:34.343Z"
+  },
+  {
+    "created": "2025-11-27T05:08:23.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-09"
+    },
+    "etag": "\"3538937007087710\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=N29kcGY5Zzk0N3Jja3UyYmthMnAyc2pvYnEgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7odpf9g947rcku2bka2p2sjobq@google.com",
+    "id": "7odpf9g947rcku2bka2p2sjobq",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 12,
+    "start": {
+      "date": "2026-02-08"
+    },
+    "status": "confirmed",
+    "summary": "POST: FMAB 1x11",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:01:43.543Z"
+  },
+  {
+    "attendees": [
+      {
+        "email": "geronimogarcia1310@gmail.com",
+        "responseStatus": "accepted"
+      },
+      {
+        "email": "deeandmeesh@gmail.com",
+        "organizer": true,
+        "responseStatus": "accepted",
+        "self": true
+      }
+    ],
+    "colorId": "9",
+    "conferenceData": {
+      "conferenceId": "ndq-oefq-axf",
+      "conferenceSolution": {
+        "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png",
+        "key": {
+          "type": "hangoutsMeet"
+        },
+        "name": "Google Meet"
+      },
+      "entryPoints": [
+        {
+          "entryPointType": "video",
+          "label": "meet.google.com/ndq-oefq-axf",
+          "uri": "https://meet.google.com/ndq-oefq-axf"
+        }
+      ]
+    },
+    "created": "2025-10-24T01:14:31.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "description": "<p><b>Quick weekly check-in to align on: </b></p><p></p><ul><li>Dev progress, unblock tasks, and plan next steps. </li></ul><p></p><p><b>We’ll review: </b></p><p></p><ul><li>What’s been built, what’s coming up, and make sure everything’s on track with the React Sync's roadmap.</li></ul><p></p>",
+    "end": {
+      "dateTime": "2026-02-08T13:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3535360224919486\"",
+    "eventType": "default",
+    "guestsCanInviteOthers": false,
+    "hangoutLink": "https://meet.google.com/ndq-oefq-axf",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NGRzcTdvdTlrZG4zczFrdDk3Nm0xY2JlNmRfMjAyNjAyMDhUMjEwMDAwWiBkZWVhbmRtZWVzaEBt",
+    "iCalUID": "4dsq7ou9kdn3s1kt976m1cbe6d_R20251214T210000@google.com",
+    "id": "4dsq7ou9kdn3s1kt976m1cbe6d_20260208T210000Z",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "originalStartTime": {
+      "dateTime": "2026-02-08T13:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "recurringEventId": "4dsq7ou9kdn3s1kt976m1cbe6d_R20251214T210000",
+    "reminders": {
+      "overrides": [
+        {
+          "method": "popup",
+          "minutes": 15
+        }
+      ]
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-08T13:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "M&D x Geronimo | React Sync Call",
+    "updated": "2026-02-01T21:00:29.125Z",
+    "visibility": "private"
+  },
+  {
+    "colorId": "6",
+    "created": "2026-01-19T01:02:36.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-08T16:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539282565918334\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=N2djcGdqaGM5MWJiYWJhMWY0ZGQ1MDUzY20gZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7gcpgjhc91bbaba1f4dd5053cm@google.com",
+    "id": "7gcpgjhc91bbaba1f4dd5053cm",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 4,
+    "start": {
+      "dateTime": "2026-02-08T15:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: One Piece 1x3",
+    "updated": "2026-01-28T23:01:22.959Z"
+  },
+  {
+    "colorId": "10",
+    "created": "2026-01-28T23:00:34.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-08T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539282860331262\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=N21sNTRubWVlbjI0OG10ZWttMWY0OW81NWEgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7ml54nmeen248mtekm1f49o55a@google.com",
+    "id": "7ml54nmeen248mtekm1f49o55a",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 3,
+    "start": {
+      "dateTime": "2026-02-08T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Four Elements(Earth) Ep. 3",
+    "updated": "2026-01-28T23:03:50.165Z"
+  },
+  {
+    "colorId": "6",
+    "created": "2026-01-21T19:43:17.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-10"
+    },
+    "etag": "\"3538937016025406\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=M25oYXU0YnFtbmFjdDBqc2pzZXBsbWtrb3UgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "3nhau4bqmnact0jsjseplmkkou@google.com",
+    "id": "3nhau4bqmnact0jsjseplmkkou",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 1,
+    "start": {
+      "date": "2026-02-09"
+    },
+    "status": "confirmed",
+    "summary": "POST: One Piece 1x1",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:01:48.012Z"
+  },
+  {
+    "created": "2025-12-18T00:37:44.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-11"
+    },
+    "etag": "\"3538937014346750\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=N3BnMnI0ZWY5dGdrbTVvODE2dW9xcHVlNXIgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7pg2r4ef9tgkm5o816uoqpue5r@google.com",
+    "id": "7pg2r4ef9tgkm5o816uoqpue5r",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 4,
+    "start": {
+      "date": "2026-02-10"
+    },
+    "status": "confirmed",
+    "summary": "POST: FMAB 1x12",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:01:47.173Z"
+  },
+  {
+    "colorId": "2",
+    "created": "2026-01-03T17:36:17.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-12"
+    },
+    "etag": "\"3538937025132894\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=N2RwaXVxMjBsZzQzb2o1MWZiZ2poMWl2aTYgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7dpiuq20lg43oj51fbgjh1ivi6@google.com",
+    "id": "7dpiuq20lg43oj51fbgjh1ivi6",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 5,
+    "start": {
+      "date": "2026-02-11"
+    },
+    "status": "confirmed",
+    "summary": "POST: Heated Rivalry Ep. 5",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:01:52.566Z"
+  },
+  {
+    "attendees": [
+      {
+        "email": "deeandmeesh@gmail.com",
+        "responseStatus": "needsAction",
+        "self": true
+      }
+    ],
+    "created": "2026-01-20T18:19:11.000Z",
+    "creator": {
+      "email": "community@patreon.com"
+    },
+    "description": "Join Patreon teammates and your fellow Patreon Creator Ambassadors in this monthly virtual meeting on Zoom. <br><br>Join here: <a href=\"https://patreon.zoom.us/j/95858101712\" target=\"_blank\"><u><u><u><u><u><u><u><u><u><u><u>https://patreon.zoom.us/j/95858101712</u></u></u></u></u></u></u></u></u></u></u></a><br><br><i>Have not been to a meetup recently? <a href=\"https://www.patreon.com/collection/598837\" target=\"_blank\"><u><u><u><u><u><u><u><u><u><u><u>Check out past meetups here</u></u></u></u></u></u></u></u></u></u></u></a>.</i>",
+    "end": {
+      "dateTime": "2026-02-11T11:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539466260980030\"",
+    "eventType": "default",
+    "guestsCanInviteOthers": false,
+    "guestsCanSeeOtherGuests": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=N2VqdDluZG9wNzF1NGFhNjdjcDl2ZXExOHAgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "7ejt9ndop71u4aa67cp9veq18p@google.com",
+    "id": "7ejt9ndop71u4aa67cp9veq18p",
+    "kind": "calendar#event",
+    "location": "https://patreon.zoom.us/j/95858101712",
+    "organizer": {
+      "email": "community@patreon.com"
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "start": {
+      "dateTime": "2026-02-11T10:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "✨ CAP Virtual Meetup ✨",
+    "updated": "2026-01-30T00:32:10.490Z"
+  },
+  {
+    "colorId": "6",
+    "created": "2026-01-20T03:27:10.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-11T16:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539282651279646\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NGxmNWRsa2VvaDNzY3FiYzhmODBuMXJzZXUgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "4lf5dlkeoh3scqbc8f80n1rseu@google.com",
+    "id": "4lf5dlkeoh3scqbc8f80n1rseu",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 3,
+    "start": {
+      "dateTime": "2026-02-11T15:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: One Piece 1x4",
+    "updated": "2026-01-28T23:02:05.639Z"
+  },
+  {
+    "created": "2026-01-22T06:16:02.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-11T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539275658849726\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MmE5NTk1bGhjZTh0OHZqbTVkMmpkM3Q2cnAgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2a9595lhce8t8vjm5d2jd3t6rp@google.com",
+    "id": "2a9595lhce8t8vjm5d2jd3t6rp",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-11T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x23",
+    "updated": "2026-01-28T22:03:49.424Z"
+  },
+  {
+    "colorId": "6",
+    "created": "2026-01-21T19:43:22.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-13"
+    },
+    "etag": "\"3538937058532318\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NnF2ODFxaTRtYzNmdHBtbWNoNm8xbzA2N2MgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "6qv81qi4mc3ftpmmch6o1o067c@google.com",
+    "id": "6qv81qi4mc3ftpmmch6o1o067c",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 2,
+    "start": {
+      "date": "2026-02-12"
+    },
+    "status": "confirmed",
+    "summary": "POST: One Piece 1x2",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:02:09.266Z"
+  },
+  {
+    "colorId": "3",
+    "created": "2026-01-19T01:02:44.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-12T16:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3537569133049950\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=Nm4xbGlrMzN1ZGo5bHNkdmdjOG5mMXQwZ2MgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "6n1lik33udj9lsdvgc8nf1t0gc@google.com",
+    "id": "6n1lik33udj9lsdvgc8nf1t0gc",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-12T14:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: JJK 3x6",
+    "updated": "2026-01-19T01:02:46.524Z"
+  },
+  {
+    "created": "2026-01-28T22:03:31.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-12T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539275642065022\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MTdsZDVkNWc3cjBvcjQxZ210bGZsdmhjZmsgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "17ld5d5g7r0or41gmtlflvhcfk@google.com",
+    "id": "17ld5d5g7r0or41gmtlflvhcfk",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-12T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x24",
+    "updated": "2026-01-28T22:03:41.032Z"
+  },
+  {
+    "colorId": "3",
+    "created": "2025-12-04T00:18:49.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-14"
+    },
+    "etag": "\"3538937048699134\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NmViaDNkOGhycnJxOWxxMjY3MDlhZnFtM2UgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "6ebh3d8hrrrq9lq26709afqm3e@google.com",
+    "id": "6ebh3d8hrrrq9lq26709afqm3e",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 2,
+    "start": {
+      "date": "2026-02-13"
+    },
+    "status": "confirmed",
+    "summary": "POST: JJK 3x6",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:02:04.349Z"
+  },
+  {
+    "colorId": "1",
+    "created": "2026-01-19T01:02:55.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-13T16:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3537569155087134\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=M2w3bmFyaHJxOThtdTl0dnE3bm5paTA1N3YgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "3l7narhrq98mu9tvq7nnii057v@google.com",
+    "id": "3l7narhrq98mu9tvq7nnii057v",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-13T14:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Frieren 2x5",
+    "updated": "2026-01-19T01:02:57.543Z"
+  },
+  {
+    "colorId": "4",
+    "created": "2026-01-28T22:33:49.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-13T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539284111804318\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MmhtM3U5OTdhOW9razkyODgwZjFnYWZwZmcgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2hm3u997a9okk92880f1gafpfg@google.com",
+    "id": "2hm3u997a9okk92880f1gafpfg",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 4,
+    "start": {
+      "dateTime": "2026-02-13T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: TLP Ep. 11",
+    "updated": "2026-01-28T23:14:15.902Z"
+  },
+  {
+    "created": "2025-12-18T00:37:49.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-15"
+    },
+    "etag": "\"3538937127809758\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MnQzNGM4ajdxN2hwcmxmNmo5Mjd0dTUxbWIgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2t34c8j7q7hprlf6j927tu51mb@google.com",
+    "id": "2t34c8j7q7hprlf6j927tu51mb",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 7,
+    "start": {
+      "date": "2026-02-14"
+    },
+    "status": "confirmed",
+    "summary": "POST: FMAB 1x13",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:02:43.904Z"
+  },
+  {
+    "colorId": "1",
+    "created": "2025-11-25T01:06:18.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-15"
+    },
+    "etag": "\"3528065561513022\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NjVjaTdwNDkxdjA4NG0ydDBhYW5vcGltMmwgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "65ci7p491v084m2t0aanopim2l@google.com",
+    "id": "65ci7p491v084m2t0aanopim2l",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 1,
+    "start": {
+      "date": "2026-02-14"
+    },
+    "status": "confirmed",
+    "summary": "POST: Frieren 2x5",
+    "transparency": "transparent",
+    "updated": "2025-11-25T01:06:20.756Z"
+  },
+  {
+    "colorId": "2",
+    "created": "2026-01-28T22:05:06.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-14T16:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539275822987934\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=M2xka2wydmhjOXY4ZDAzMW9hNm9rNWY3dWogZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "3ldkl2vhc9v8d031oa6ok5f7uj@google.com",
+    "id": "3ldkl2vhc9v8d031oa6ok5f7uj",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "start": {
+      "dateTime": "2026-02-14T14:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: AOT Suite",
+    "updated": "2026-01-28T22:05:11.493Z"
+  },
+  {
+    "colorId": "10",
+    "created": "2026-01-28T23:03:55.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-14T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539283989109278\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NXNwZXI1YjZtdWhkbjBmcnQxcDJqNWJmaHMgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "5sper5b6muhdn0frt1p2j5bfhs@google.com",
+    "id": "5sper5b6muhdn0frt1p2j5bfhs",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-14T17:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: Four Elements(Earth) Ep. 4",
+    "updated": "2026-01-28T23:13:14.554Z"
+  },
+  {
+    "created": "2026-01-28T23:00:09.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-14T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539284121770718\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MzRvNTZoaTZiNW9ocWZwazV1NXNjamtlYzIgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "34o56hi6b5ohqfpk5u5scjkec2@google.com",
+    "id": "34o56hi6b5ohqfpk5u5scjkec2",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-14T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x25",
+    "updated": "2026-01-28T23:14:20.885Z"
+  },
+  {
+    "created": "2025-12-18T00:38:29.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "date": "2026-02-16"
+    },
+    "etag": "\"3538937192504862\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MjJpYm9ocWNxcm1tMHBhc3I1MHYwbHN2c20gZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "22ibohqcqrmm0pasr50v0lsvsm@google.com",
+    "id": "22ibohqcqrmm0pasr50v0lsvsm",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {},
+    "sequence": 6,
+    "start": {
+      "date": "2026-02-15"
+    },
+    "status": "confirmed",
+    "summary": "POST: FMAB 1x14",
+    "transparency": "transparent",
+    "updated": "2026-01-26T23:03:16.252Z"
+  },
+  {
+    "attendees": [
+      {
+        "email": "geronimogarcia1310@gmail.com",
+        "responseStatus": "accepted"
+      },
+      {
+        "email": "deeandmeesh@gmail.com",
+        "organizer": true,
+        "responseStatus": "accepted",
+        "self": true
+      }
+    ],
+    "colorId": "9",
+    "conferenceData": {
+      "conferenceId": "ndq-oefq-axf",
+      "conferenceSolution": {
+        "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png",
+        "key": {
+          "type": "hangoutsMeet"
+        },
+        "name": "Google Meet"
+      },
+      "entryPoints": [
+        {
+          "entryPointType": "video",
+          "label": "meet.google.com/ndq-oefq-axf",
+          "uri": "https://meet.google.com/ndq-oefq-axf"
+        }
+      ]
+    },
+    "created": "2025-10-24T01:14:31.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "description": "<p><b>Quick weekly check-in to align on: </b></p><p></p><ul><li>Dev progress, unblock tasks, and plan next steps. </li></ul><p></p><p><b>We’ll review: </b></p><p></p><ul><li>What’s been built, what’s coming up, and make sure everything’s on track with the React Sync's roadmap.</li></ul><p></p>",
+    "end": {
+      "dateTime": "2026-02-15T13:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3535360224919486\"",
+    "eventType": "default",
+    "guestsCanInviteOthers": false,
+    "hangoutLink": "https://meet.google.com/ndq-oefq-axf",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NGRzcTdvdTlrZG4zczFrdDk3Nm0xY2JlNmRfMjAyNjAyMTVUMjEwMDAwWiBkZWVhbmRtZWVzaEBt",
+    "iCalUID": "4dsq7ou9kdn3s1kt976m1cbe6d_R20251214T210000@google.com",
+    "id": "4dsq7ou9kdn3s1kt976m1cbe6d_20260215T210000Z",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "originalStartTime": {
+      "dateTime": "2026-02-15T13:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "recurringEventId": "4dsq7ou9kdn3s1kt976m1cbe6d_R20251214T210000",
+    "reminders": {
+      "overrides": [
+        {
+          "method": "popup",
+          "minutes": 15
+        }
+      ]
+    },
+    "sequence": 2,
+    "start": {
+      "dateTime": "2026-02-15T13:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "M&D x Geronimo | React Sync Call",
+    "updated": "2026-02-01T21:00:29.125Z",
+    "visibility": "private"
+  },
+  {
+    "colorId": "6",
+    "created": "2026-01-20T03:28:46.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-15T16:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539282687463070\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=NDQydW1nbWZlNjVuYW0zbmhjMDdnOTducmUgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "442umgmfe65nam3nhc07g97nre@google.com",
+    "id": "442umgmfe65nam3nhc07g97nre",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 3,
+    "start": {
+      "dateTime": "2026-02-15T15:45:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: One Piece 1x5",
+    "updated": "2026-01-28T23:02:23.731Z"
+  },
+  {
+    "created": "2026-01-28T23:14:30.000Z",
+    "creator": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "end": {
+      "dateTime": "2026-02-15T19:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539284146164606\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=MmVrbDgzaHFhMDhoa252ZmoxM2JycjBndnYgZGVlYW5kbWVlc2hAbQ",
+    "iCalUID": "2ekl83hqa08hknvfj13brr0gvv@google.com",
+    "id": "2ekl83hqa08hknvfj13brr0gvv",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deeandmeesh@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "sequence": 1,
+    "start": {
+      "dateTime": "2026-02-15T18:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Film: FMAB 1x26-27",
+    "updated": "2026-01-28T23:14:33.082Z"
+  }
+]
+    },
+    {
+      "id": "dee-personal",
+      "name": "Dee",
+      "color": "#9fc6e7",
+      "events": [
+  {
+    "created": "2026-02-01T21:21:15.000Z",
+    "creator": {
+      "email": "deniseefer@gmail.com",
+      "self": true
+    },
+    "description": "CA Bar annual fees due March 30, 2026.\n\nTo do:\n1. Pay fees at calbar.ca.gov\n2. Submit expense reimbursement to Telnyx\n\nFrankie reminder 🚀",
+    "end": {
+      "dateTime": "2026-02-06T12:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "etag": "\"3539961751727582\"",
+    "eventType": "default",
+    "htmlLink": "https://www.google.com/calendar/event?eid=OThzbDdncDVvbGxqbWFxZmc0Ymw2c2F1MTAgZGVuaXNlZWZlckBt",
+    "iCalUID": "98sl7gp5olljmaqfg4bl6sau10@google.com",
+    "id": "98sl7gp5olljmaqfg4bl6sau10",
+    "kind": "calendar#event",
+    "organizer": {
+      "email": "deniseefer@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "overrides": [
+        {
+          "method": "popup",
+          "minutes": 30
+        }
+      ]
+    },
+    "start": {
+      "dateTime": "2026-02-06T12:00:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "💼 Pay CA Bar Fees + Expense to Telnyx",
+    "updated": "2026-02-01T21:21:15.863Z"
+  },
+  {
+    "attendees": [
+      {
+        "email": "deniseefer@gmail.com",
+        "organizer": true,
+        "responseStatus": "accepted",
+        "self": true
+      },
+      {
+        "email": "deeandmeesh@gmail.com",
+        "responseStatus": "accepted"
+      }
+    ],
+    "created": "2026-01-15T02:11:07.000Z",
+    "creator": {
+      "email": "deniseefer@gmail.com",
+      "self": true
+    },
+    "description": "To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar\n\nThis event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DP9yvJH9MRbzqiXdEiY1T3jkEtdruUqFdw\n",
+    "end": {
+      "dateTime": "2026-02-06T19:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "endTimeUnspecified": true,
+    "etag": "\"3536886623972862\"",
+    "eventType": "fromGmail",
+    "guestsCanInviteOthers": false,
+    "htmlLink": "https://www.google.com/calendar/event?eid=bmFoc2RzMGhma3YzYThpdGpoMWUwZzQ3dDggZGVuaXNlZWZlckBt",
+    "iCalUID": "nahsds0hfkv3a8itjh1e0g47t8@google.com",
+    "id": "nahsds0hfkv3a8itjh1e0g47t8",
+    "kind": "calendar#event",
+    "location": "Todos Santos, 22322 El Paseo, Rancho Santa Margarita, CA, 92688-5801, United States",
+    "organizer": {
+      "email": "deniseefer@gmail.com",
+      "self": true
+    },
+    "reminders": {
+      "useDefault": true
+    },
+    "source": {
+      "url": "https://mail.google.com/mail?extsrc=cal&plid=ACUX6DP9yvJH9MRbzqiXdEiY1T3jkEtdruUqFdw"
+    },
+    "start": {
+      "dateTime": "2026-02-06T18:30:00-08:00",
+      "timeZone": "America/Los_Angeles"
+    },
+    "status": "confirmed",
+    "summary": "Reservation at Todos Santos",
+    "transparency": "transparent",
+    "updated": "2026-01-15T02:15:11.986Z"
+  }
+]
+    }
+  ]
+}

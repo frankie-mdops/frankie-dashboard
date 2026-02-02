@@ -373,6 +373,204 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
+       GOOGLE CALENDAR STYLE SECTION
+    ═══════════════════════════════════════════════════════════ */
+    .calendar-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .calendar-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .calendar-loading {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 16px;
+    }
+
+    .cal-event {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      background: var(--bg-primary);
+      border-left: 3px solid var(--accent-sage);
+      transition: all 0.15s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cal-event:hover {
+      transform: translateX(2px);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .cal-event.all-day {
+      background: linear-gradient(135deg, var(--bg-hover), var(--bg-primary));
+      border-left-width: 4px;
+    }
+
+    .cal-event-time {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--text-muted);
+      min-width: 38px;
+      flex-shrink: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .cal-event-time.all-day {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cal-event-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cal-event-title {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cal-event-location {
+      font-size: 9px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .cal-event-source {
+      font-size: 7px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 4px;
+      border-radius: 2px;
+      background: var(--bg-hover);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Calendar colors - pastel palette */
+    .cal-event.cal-md-personal { border-left-color: #92e1c0; }
+    .cal-event.cal-md-personal .cal-event-source { background: #e8f8f0; color: #3d7d5c; }
+    
+    .cal-event.cal-md-content { border-left-color: #9fe1e7; }
+    .cal-event.cal-md-content .cal-event-source { background: #e5f5f7; color: #3d7d8a; }
+    
+    .cal-event.cal-dee-personal { border-left-color: #c5c1cb; }
+    .cal-event.cal-dee-personal .cal-event-source { background: #f0eff2; color: #6b6573; }
+
+    /* Event type colors from Google Calendar */
+    .cal-event[data-color="1"] { border-left-color: #ac725e; }
+    .cal-event[data-color="2"] { border-left-color: #d06b64; }
+    .cal-event[data-color="3"] { border-left-color: #f83a22; }
+    .cal-event[data-color="4"] { border-left-color: #fa573c; }
+    .cal-event[data-color="5"] { border-left-color: #ff7537; }
+    .cal-event[data-color="6"] { border-left-color: #ffad46; }
+    .cal-event[data-color="7"] { border-left-color: #42d692; }
+    .cal-event[data-color="8"] { border-left-color: #16a765; }
+    .cal-event[data-color="9"] { border-left-color: #7bd148; }
+    .cal-event[data-color="10"] { border-left-color: #b3dc6c; }
+    .cal-event[data-color="11"] { border-left-color: #fbe983; }
+
+    /* Upcoming section */
+    .calendar-upcoming-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-top: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-light);
+      cursor: pointer;
+    }
+
+    .calendar-upcoming-header:hover {
+      color: var(--text-muted);
+    }
+
+    .calendar-upcoming {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .cal-day-group {
+      margin-bottom: 6px;
+    }
+
+    .cal-day-header {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .cal-day-header.is-tomorrow {
+      color: var(--accent-lavender);
+    }
+
+    .calendar-sync-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 8px;
+      color: var(--text-faint);
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .sync-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--status-online);
+    }
+
+    .cal-empty {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 12px;
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
        MAIN CONTENT
     ═══════════════════════════════════════════════════════════ */
     .main {
@@ -838,29 +1036,27 @@
         </div>
       </div>
 
-      <div class="sidebar-section">
+      <div class="sidebar-section calendar-section">
         <div class="section-label collapsible-header" onclick="toggleCollapse('scheduleContent', this)">
           <span id="todayDate">Today — Feb 1</span>
           <span class="collapse-arrow">▼</span>
         </div>
         <div class="collapsible-content" id="scheduleContent">
-          <div class="schedule-list">
-            <div class="schedule-item">
-              <span class="schedule-time">📋</span>
-              <span>CA Bar Fees (March)</span>
+          <div class="calendar-timeline" id="todayTimeline">
+            <div class="calendar-loading">Loading calendar...</div>
+          </div>
+          <div class="calendar-upcoming-header" onclick="toggleCollapse('upcomingContent', this)">
+            <span>Upcoming</span>
+            <span class="collapse-arrow">▼</span>
+          </div>
+          <div class="collapsible-content" id="upcomingContent">
+            <div class="calendar-upcoming" id="upcomingEvents">
+              <!-- Populated by JS -->
             </div>
-            <div class="schedule-item">
-              <span class="schedule-time">2:00p</span>
-              <span>Geronimo Sync</span>
-            </div>
-            <div class="schedule-item">
-              <span class="schedule-time">3:45p</span>
-              <span>Film: One Piece</span>
-            </div>
-            <div class="schedule-item">
-              <span class="schedule-time">6:00p</span>
-              <span>Film: FMAB</span>
-            </div>
+          </div>
+          <div class="calendar-sync-info" id="calendarSyncInfo">
+            <span class="sync-dot"></span>
+            Last synced: —
           </div>
         </div>
       </div>
