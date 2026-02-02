@@ -1,22 +1,11 @@
 {
   "current": [
     {
-      "id": 3,
-      "title": "Dashboard improvements & mobile fixes",
-      "status": "in-progress",
-      "startedAt": "2026-02-02T02:10:00-08:00"
-    },
-    {
-      "id": 4,
-      "title": "10 Telnyx bot ideas for legal team",
-      "status": "in-progress",
-      "startedAt": "2026-02-02T02:10:00-08:00"
-    },
-    {
-      "id": 5,
-      "title": "Fix screenshot capability",
-      "status": "in-progress",
-      "startedAt": "2026-02-02T02:10:00-08:00"
+      "id": 2,
+      "title": "Dashboard UI/UX Overhaul",
+      "status": "done",
+      "startedAt": "2026-02-02T02:10:00-08:00",
+      "completedAt": "2026-02-02T02:45:00-08:00"
     }
   ],
   "completed": [
@@ -26,10 +15,23 @@
       "completedAt": "2026-02-02T00:45:00-08:00"
     },
     {
-      "id": 2,
+      "id": 0,
       "title": "Dashboard hosting + password protection",
       "completedAt": "2026-02-02T00:20:00-08:00"
     }
   ],
-  "updatedAt": "2026-02-02T02:10:00-08:00"
+  "improvements": [
+    "✨ Styled password modal (luxury feel instead of browser prompt)",
+    "🌙 Dark mode toggle with system preference detection",
+    "📱 Improved mobile responsiveness with bottom navigation",
+    "⌨️ Keyboard shortcuts (N=New, D=Dark mode, R=Refresh, ?=Help)",
+    "💬 Better task modal (styled form instead of prompts)",
+    "🎨 Refined KITH/Fear of God color palette",
+    "⏰ Dynamic welcome message based on time of day",
+    "🎯 Smoother animations and transitions",
+    "📊 Better visual hierarchy throughout",
+    "🔄 Auto-refresh status and calendar",
+    "💾 Theme persistence in localStorage"
+  ],
+  "updatedAt": "2026-02-02T02:45:00-08:00"
 }
