@@ -2,6 +2,10 @@
   "current": [],
   "completed": [
     {
+      "task": "Drafted 10 tweets for the week (saved to docs/TWITTER-DRAFTS-02-02-26.md)",
+      "completedAt": "3:05 AM on 02/02/26"
+    },
+    {
       "task": "Updated timestamp format (PST, 2-digit year)",
       "completedAt": "2:58 AM on 02/02/26"
     },
@@ -20,10 +24,6 @@
     {
       "task": "Set up ~/clawd/bots/ folder structure",
       "completedAt": "2:28 AM on 02/02/26"
-    },
-    {
-      "task": "Updated task board with timestamps",
-      "completedAt": "2:54 AM on 02/02/26"
     },
     {
       "task": "Created backup to Desktop",
