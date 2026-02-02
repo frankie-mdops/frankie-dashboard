@@ -535,6 +535,7 @@
 
     .card:active { cursor: grabbing; }
     .card.dragging { opacity: 0.4; }
+    .card.drop-above { border-top: 2px solid #7C3AED; margin-top: -2px; }
 
     .card-title {
       font-size: 12px;
@@ -1156,52 +1157,40 @@
       const metaEl = document.createElement('div');
       metaEl.className = 'card-meta';
       
-      // Tag dropdown
-      const tagSelect = document.createElement('select');
-      tagSelect.className = `tag-select tag-${t.tag}`;
-      tagSelect.style.cssText = 'border:none;background:transparent;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer;padding:2px 4px;border-radius:4px;';
+      // Tag badge (click to cycle)
+      const tagEl = document.createElement('span');
+      tagEl.className = `tag tag-${t.tag}`;
+      tagEl.textContent = t.tag;
+      tagEl.style.cursor = 'pointer';
+      tagEl.title = 'Click to change tag';
       const tags = ['content','business','health','legal','empire','meesh'];
-      tags.forEach(tag => {
-        const opt = document.createElement('option');
-        opt.value = tag;
-        opt.textContent = tag;
-        if (tag === t.tag) opt.selected = true;
-        tagSelect.appendChild(opt);
-      });
-      tagSelect.addEventListener('change', (e) => {
+      tagEl.addEventListener('click', (e) => {
         e.stopPropagation();
-        t.tag = tagSelect.value;
+        const idx = tags.indexOf(t.tag);
+        t.tag = tags[(idx + 1) % tags.length];
         saveTasks();
         render();
         toast('Tag: ' + t.tag);
       });
-      tagSelect.addEventListener('mousedown', () => { card.draggable = false; });
-      tagSelect.addEventListener('blur', () => { card.draggable = true; });
-      metaEl.appendChild(tagSelect);
+      metaEl.appendChild(tagEl);
       
-      // Priority dropdown (if exists and not done)
+      // Priority badge (click to cycle, if exists and not done)
       if (t.priority && !t.date) {
-        const prioSelect = document.createElement('select');
-        prioSelect.className = `priority-select priority-${t.priority}`;
-        prioSelect.style.cssText = 'border:none;background:transparent;font-size:10px;font-weight:500;cursor:pointer;padding:2px 4px;border-radius:4px;margin-left:4px;';
+        const prioEl = document.createElement('span');
+        prioEl.className = `priority ${t.priority}`;
+        prioEl.textContent = t.priority;
+        prioEl.style.cursor = 'pointer';
+        prioEl.title = 'Click to change priority';
         const prios = ['low','medium','high'];
-        prios.forEach(prio => {
-          const opt = document.createElement('option');
-          opt.value = prio;
-          opt.textContent = prio;
-          if (prio === t.priority) opt.selected = true;
-          prioSelect.appendChild(opt);
-        });
-        prioSelect.addEventListener('change', (e) => {
+        prioEl.addEventListener('click', (e) => {
           e.stopPropagation();
-          t.priority = prioSelect.value;
+          const idx = prios.indexOf(t.priority);
+          t.priority = prios[(idx + 1) % prios.length];
           saveTasks();
           render();
           toast('Priority: ' + t.priority);
         });
-        prioSelect.addEventListener('mousedown', () => { card.draggable = false; });
-        prioSelect.addEventListener('blur', () => { card.draggable = true; });
-        metaEl.appendChild(prioSelect);
+        metaEl.appendChild(prioEl);
       }
       
       // Due date badge (if exists)
@@ -1222,39 +1211,19 @@
       
       card.appendChild(metaEl);
       
-      // Card actions row (move up/down, delete)
-      const actionsEl = document.createElement('div');
-      actionsEl.className = 'card-actions';
-      actionsEl.style.cssText = 'display:flex;gap:4px;margin-top:8px;opacity:0;transition:opacity 0.2s;';
-      
-      const btnStyle = 'background:#f0f0f0;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:11px;color:#666;';
-      
-      const upBtn = document.createElement('button');
-      upBtn.textContent = '↑';
-      upBtn.style.cssText = btnStyle;
-      upBtn.title = 'Move up';
-      upBtn.addEventListener('click', (e) => { e.stopPropagation(); moveTask(t.id, -1); });
-      actionsEl.appendChild(upBtn);
-      
-      const downBtn = document.createElement('button');
-      downBtn.textContent = '↓';
-      downBtn.style.cssText = btnStyle;
-      downBtn.title = 'Move down';
-      downBtn.addEventListener('click', (e) => { e.stopPropagation(); moveTask(t.id, 1); });
-      actionsEl.appendChild(downBtn);
-      
+      // Delete button (shows on hover)
       const delBtn = document.createElement('button');
       delBtn.textContent = '✕';
-      delBtn.style.cssText = btnStyle + 'color:#e53e3e;';
+      delBtn.className = 'card-delete';
+      delBtn.style.cssText = 'position:absolute;top:4px;right:4px;background:#f0f0f0;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:11px;color:#e53e3e;opacity:0;transition:opacity 0.2s;';
       delBtn.title = 'Delete task';
       delBtn.addEventListener('click', (e) => { e.stopPropagation(); deleteTask(t.id); });
-      actionsEl.appendChild(delBtn);
+      card.appendChild(delBtn);
+      card.style.position = 'relative';
       
-      card.appendChild(actionsEl);
-      
-      // Show actions on hover
-      card.addEventListener('mouseenter', () => { actionsEl.style.opacity = '1'; });
-      card.addEventListener('mouseleave', () => { actionsEl.style.opacity = '0'; });
+      // Show delete on hover
+      card.addEventListener('mouseenter', () => { delBtn.style.opacity = '1'; });
+      card.addEventListener('mouseleave', () => { delBtn.style.opacity = '0'; });
       
       card.addEventListener('dragstart', e => { draggedEl = card; card.classList.add('dragging'); });
       card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedEl = null; document.querySelectorAll('.column-body').forEach(c => c.classList.remove('drag-over')); });
@@ -1271,21 +1240,48 @@
     }
 
     document.querySelectorAll('.column-body').forEach(zone => {
-      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
-      zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+      zone.addEventListener('dragover', e => { 
+        e.preventDefault(); 
+        zone.classList.add('drag-over');
+        // Show drop indicator
+        const cards = [...zone.querySelectorAll('.card:not(.dragging)')];
+        const afterCard = cards.find(card => {
+          const rect = card.getBoundingClientRect();
+          return e.clientY < rect.top + rect.height / 2;
+        });
+        cards.forEach(c => c.classList.remove('drop-above'));
+        if (afterCard) afterCard.classList.add('drop-above');
+      });
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('drag-over');
+        zone.querySelectorAll('.card').forEach(c => c.classList.remove('drop-above'));
+      });
       zone.addEventListener('drop', e => {
         e.preventDefault();
         zone.classList.remove('drag-over');
+        zone.querySelectorAll('.card').forEach(c => c.classList.remove('drop-above'));
         if (!draggedEl) return;
         const id = +draggedEl.dataset.id, newCol = zone.dataset.col;
-        let task;
+        
+        // Find drop position
+        const cards = [...zone.querySelectorAll('.card:not(.dragging)')];
+        const afterCard = cards.find(card => {
+          const rect = card.getBoundingClientRect();
+          return e.clientY < rect.top + rect.height / 2;
+        });
+        const dropIdx = afterCard ? tasks[newCol].findIndex(t => t.id === +afterCard.dataset.id) : tasks[newCol].length;
+        
+        let task, oldCol;
         for (const k of Object.keys(tasks)) {
           const i = tasks[k].findIndex(t => t.id === id);
-          if (i > -1) { task = tasks[k].splice(i, 1)[0]; break; }
+          if (i > -1) { task = tasks[k].splice(i, 1)[0]; oldCol = k; break; }
         }
         if (task) {
           if (newCol === 'done' && !task.date) { task.date = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}); delete task.due; delete task.priority; }
-          tasks[newCol].push(task);
+          // Insert at position (adjust if same column and moved down)
+          const adjustedIdx = (oldCol === newCol && dropIdx > tasks[newCol].length) ? dropIdx - 1 : dropIdx;
+          tasks[newCol].splice(Math.min(adjustedIdx, tasks[newCol].length), 0, task);
+          saveTasks();
           render();
           toast('Task moved');
         }
