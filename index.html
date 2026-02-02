@@ -1103,10 +1103,7 @@
       card.draggable = true;
       card.dataset.id = t.id;
 
-      let meta = `<span class="tag tag-${t.tag}">${t.tag}</span>`;
-      if (t.due) meta += `<span class="due-badge">⚠️ ${t.due}</span>`;
-      else if (t.priority) meta += `<span class="priority ${t.priority}">${t.priority}</span>`;
-      if (t.date) meta += `<span class="date-badge">${t.date}</span>`;
+      // Meta elements built dynamically below
 
       const titleEl = document.createElement('div');
       titleEl.className = 'card-title';
@@ -1124,9 +1121,62 @@
       });
       titleEl.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); titleEl.blur(); } });
       card.appendChild(titleEl);
+      
       const metaEl = document.createElement('div');
       metaEl.className = 'card-meta';
-      metaEl.innerHTML = meta;
+      
+      // Editable tag
+      const tagEl = document.createElement('span');
+      tagEl.className = `tag tag-${t.tag}`;
+      tagEl.textContent = t.tag;
+      tagEl.style.cursor = 'pointer';
+      tagEl.title = 'Click to change tag';
+      const tags = ['content','business','health','legal','empire','meesh'];
+      tagEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = tags.indexOf(t.tag);
+        t.tag = tags[(idx + 1) % tags.length];
+        saveTasks();
+        render();
+        toast('Tag: ' + t.tag);
+      });
+      metaEl.appendChild(tagEl);
+      
+      // Editable priority (if exists and not done)
+      if (t.priority && !t.date) {
+        const prioEl = document.createElement('span');
+        prioEl.className = `priority ${t.priority}`;
+        prioEl.textContent = t.priority;
+        prioEl.style.cursor = 'pointer';
+        prioEl.title = 'Click to change priority';
+        const prios = ['low','medium','high'];
+        prioEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = prios.indexOf(t.priority);
+          t.priority = prios[(idx + 1) % prios.length];
+          saveTasks();
+          render();
+          toast('Priority: ' + t.priority);
+        });
+        metaEl.appendChild(prioEl);
+      }
+      
+      // Due date badge (if exists)
+      if (t.due) {
+        const dueEl = document.createElement('span');
+        dueEl.className = 'due-badge';
+        dueEl.textContent = '⚠️ ' + t.due;
+        metaEl.appendChild(dueEl);
+      }
+      
+      // Completed date (if exists)
+      if (t.date) {
+        const dateEl = document.createElement('span');
+        dateEl.className = 'date-badge';
+        dateEl.textContent = t.date;
+        metaEl.appendChild(dateEl);
+      }
+      
       card.appendChild(metaEl);
       card.addEventListener('dragstart', e => { draggedEl = card; card.classList.add('dragging'); });
       card.addEventListener('dragend', () => { card.classList.remove('dragging'); draggedEl = null; document.querySelectorAll('.column-body').forEach(c => c.classList.remove('drag-over')); });
