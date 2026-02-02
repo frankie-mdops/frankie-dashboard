@@ -1062,6 +1062,16 @@
       </div>
 
       <div class="sidebar-section">
+        <div class="section-label collapsible-header" onclick="toggleCollapse('frankieTasksContent', this)">
+          <span>🤖 Frankie's Tasks</span>
+          <span class="collapse-arrow">▼</span>
+        </div>
+        <div class="collapsible-content" id="frankieTasksContent">
+          <div id="frankieTasksList" style="font-size:12px;color:var(--text-secondary);">Loading...</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
         <div class="section-label collapsible-header" onclick="toggleCollapse('visionContent', this)">
           <span>The Vision 2027</span>
           <span class="collapse-arrow">▼</span>
@@ -1599,6 +1609,44 @@
     });
     
     // Fetch Frankie's live status
+    async function updateFrankieTasks() {
+      try {
+        const res = await fetch('frankie-tasks.json?' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          const container = document.getElementById('frankieTasksList');
+          let html = '';
+          
+          // Current tasks
+          const active = data.current?.filter(t => t.status !== 'done') || [];
+          const done = data.current?.filter(t => t.status === 'done') || [];
+          
+          if (active.length > 0) {
+            html += '<div style="margin-bottom:8px;"><strong style="color:#7C3AED;">Working on:</strong></div>';
+            active.forEach(t => {
+              html += `<div style="padding:4px 0;border-bottom:1px solid var(--border-light);">⚡ ${t.title}</div>`;
+            });
+          }
+          
+          if (done.length > 0) {
+            html += '<div style="margin:8px 0 4px;"><strong style="color:#22C55E;">Just completed:</strong></div>';
+            done.slice(0, 3).forEach(t => {
+              html += `<div style="padding:4px 0;color:var(--text-muted);">✓ ${t.title}</div>`;
+            });
+          }
+          
+          if (data.completed?.length > 0) {
+            html += '<div style="margin:8px 0 4px;font-size:11px;color:var(--text-muted);">Recent:</div>';
+            data.completed.slice(0, 3).forEach(t => {
+              html += `<div style="padding:2px 0;font-size:11px;color:var(--text-faint);">✓ ${t.title}</div>`;
+            });
+          }
+          
+          container.innerHTML = html || '<div style="color:var(--text-muted);">No active tasks</div>';
+        }
+      } catch (e) { console.log('Tasks fetch error:', e); }
+    }
+
     async function updateFrankieStatus() {
       try {
         const res = await fetch('frankie-status.json?' + Date.now());
@@ -1809,9 +1857,10 @@
       syncEl.innerHTML = `<span class="sync-dot"></span>Synced ${timeStr}`;
     }
 
-    render(); sync(); vday(); updateTodayDate(); restoreCollapseState(); updateFrankieStatus(); fetchCalendarData();
+    render(); sync(); vday(); updateTodayDate(); restoreCollapseState(); updateFrankieStatus(); updateFrankieTasks(); fetchCalendarData();
     setInterval(sync, 30000);
     setInterval(updateFrankieStatus, 10000); // Check every 10 seconds
+    setInterval(updateFrankieTasks, 30000); // Check tasks every 30 seconds
     setInterval(fetchCalendarData, 300000); // Refresh calendar every 5 minutes
   </script>
 </body>

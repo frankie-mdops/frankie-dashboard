@@ -1,0 +1,19 @@
+{
+  "current": [
+    {
+      "id": 1,
+      "title": "Google Calendar Integration",
+      "status": "done",
+      "startedAt": "2026-02-02T00:41:00-08:00",
+      "completedAt": "2026-02-02T00:45:00-08:00"
+    }
+  ],
+  "completed": [
+    {
+      "id": 0,
+      "title": "Dashboard hosting + password protection",
+      "completedAt": "2026-02-02T00:20:00-08:00"
+    }
+  ],
+  "updatedAt": "2026-02-02T00:45:00-08:00"
+}
