@@ -4,6 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FRANKIE — Dee's Mission Control</title>
+  <script>
+    (function() {
+      const CORRECT_PASSWORD = 'DeeAgent7913';
+      const STORAGE_KEY = 'frankie_authenticated';
+      
+      // Check if already authenticated this session
+      if (sessionStorage.getItem(STORAGE_KEY) === 'true') return;
+      
+      // Block rendering until authenticated
+      document.documentElement.style.display = 'none';
+      
+      window.addEventListener('DOMContentLoaded', function() {
+        let attempts = 0;
+        const maxAttempts = 3;
+        
+        while (attempts < maxAttempts) {
+          const input = prompt('🔒 Enter password to access Frankie Dashboard:');
+          
+          if (input === null) {
+            // User cancelled
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Inter,sans-serif;color:#666;">Access denied. Refresh to try again.</div>';
+            document.documentElement.style.display = '';
+            return;
+          }
+          
+          if (input === CORRECT_PASSWORD) {
+            sessionStorage.setItem(STORAGE_KEY, 'true');
+            document.documentElement.style.display = '';
+            return;
+          }
+          
+          attempts++;
+          if (attempts < maxAttempts) {
+            alert('❌ Incorrect password. ' + (maxAttempts - attempts) + ' attempts remaining.');
+          }
+        }
+        
+        // Max attempts reached
+        document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Inter,sans-serif;color:#666;">Too many failed attempts. Refresh to try again.</div>';
+        document.documentElement.style.display = '';
+      });
+    })();
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
